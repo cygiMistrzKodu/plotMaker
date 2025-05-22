@@ -1,12 +1,66 @@
 <IntrestRateInput>:
-    BoxLayout:
-        orientation: "horizontal"
+    AnchorLayout:
+        orientation: "vertical"
+        anchor_x: "left"
+        anchor_y: "top"
+        padding: 40
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: (None, None)
+            spacing: 10
+            width: 400
+            height: 250
 
-    Label:
-        id: capital_amount_label
-        text: "Kapitał"
+            BoxLayout:
+                orientation: "horizontal"
+                Label:
+                    id: deposit_amount_label
+                    text: "Kapitał: "
+                    size_hint_x: 0.3
 
-    TextInput:
-        hint_text: "Wpisz kapitał"
+                TextInput:
+                    id: deposit_input_id
+                    hint_text: "Wpisz kapitał zł"
+                    size_hint_x: 0.7
+                    input_filter: "int"
+
+            BoxLayout:
+                orientation: "horizontal"
+                Label:
+                    id: deposit_term_label
+                    text: "Czas lokaty: "
+                    size_hint_x: 0.3
+                TextInput:
+                    id: deposit_term_input_id
+                    hint_text: "Wpisz czas lokaty w miesiącach"
+                    size_hint_x: 0.7
+
+            BoxLayout:
+                orientation: "horizontal"
+                spacing: 36
+                Label:
+                    id: annual_interest_rate_label
+                    text: "Oprocentowanie: "
+                    size_hint_x: 0.3
+                TextInput:
+                    id: annual_interest_rate_input_id
+                    hint_text: "Wpisz oprocentoawnie w %"
+                    input_filter: "float"
+
+            BoxLayout:
+                orientation: "horizontal"
+                spacing: 36
+                Label:
+                    id: interest_capitalization_label
+                    text: "Naliczanie odsetek: "
+                    size_hint_x: 0.3
+                Spinner:
+                    padding: [10, 5]
+                    id: interest_capitalization_spinner
+                    values: ["Miesięcznie", "Rocznie"]
+                    hint_text: "Wybierz sposób naliczania (miesiecznie, rocznie)"
+
+
+
 
 
