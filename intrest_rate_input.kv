@@ -27,11 +27,11 @@
             BoxLayout:
                 orientation: "horizontal"
                 Label:
-                    id: deposit_term_label
+                    id: deposit_time_label
                     text: "Czas lokaty: "
                     size_hint_x: 0.3
                 TextInput:
-                    id: deposit_term_input_id
+                    id: deposit_time_input_id
                     hint_text: "Wpisz czas lokaty w miesiącach"
                     input_filter: "int"
                     size_hint_x: 0.7
@@ -59,8 +59,8 @@
                 Spinner:
                     padding: [10, 5]
                     id: interest_capitalization_spinner
-                    text: "Rocznie"
-                    values: ["Miesięcznie", "Rocznie"]
+                    text: "yearly"
+                    values: ["monthly", "yearly"]
                     hint_text: "Wybierz sposób naliczania (miesiecznie, rocznie)"
 
 

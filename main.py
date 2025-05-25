@@ -29,6 +29,24 @@ class IntrestRateInput(BoxLayout):
         except ValueError:
             text_input.foreground_color = (1, 0, 0, 1)
 
+    def get_user_input(self):
+
+        capitalization_mapping = {
+            "monthly": 12,
+            "yearly": 1
+        }
+
+        selected_capitalization = self.ids.interest_capitalization_spinner
+        capitalization_period = capitalization_mapping.get(selected_capitalization, 1)
+
+        data = {
+            "capital": self.ids.deposit_input_id,
+            "depositTime": self.ids.deposit_time_input_id,
+            "intrestRate": self.ids.annual_interest_rate_input_id,
+            "interestCapitalization": capitalization_period
+        }
+        return data
+
 
 if __name__ == "__main__":
     PlotMakerApp().run()
