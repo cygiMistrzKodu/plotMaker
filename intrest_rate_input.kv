@@ -33,6 +33,7 @@
                 TextInput:
                     id: deposit_term_input_id
                     hint_text: "Wpisz czas lokaty w miesiącach"
+                    input_filter: "int"
                     size_hint_x: 0.7
 
             BoxLayout:
@@ -46,6 +47,7 @@
                     id: annual_interest_rate_input_id
                     hint_text: "Wpisz oprocentoawnie w %"
                     input_filter: "float"
+                    on_text: root.process_intrest(self)
 
             BoxLayout:
                 orientation: "horizontal"
@@ -57,6 +59,7 @@
                 Spinner:
                     padding: [10, 5]
                     id: interest_capitalization_spinner
+                    text: "Rocznie"
                     values: ["Miesięcznie", "Rocznie"]
                     hint_text: "Wybierz sposób naliczania (miesiecznie, rocznie)"
 
