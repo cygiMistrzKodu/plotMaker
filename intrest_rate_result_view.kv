@@ -1,0 +1,45 @@
+<IntrestRateResultView>
+    AnchorLayout:
+        orientation: "vertical"
+        anchor_x: "center"
+        anchor_y: "top"
+        BoxLayout:
+            orientation: "vertical"
+            BoxLayout:
+                orientation: "horizontal"
+                Label:
+                    id: deposit_amount_result_id
+                    text: "Kapitał: " + root.depositAmount + " zł"
+                    valign: "middle"
+                    halign: "left"
+
+                Label:
+                    id: deposit_time_result_id
+                    text: "Czas: " + root.depositTime + " miesięcy"
+                    valign: "middle"
+                    halign: "left"
+
+                Label:
+                    id: annual_interest_rate_id
+                    text: "Orpcentowanie: " +root.annualInterestRate +"%"
+                    valign: "middle"
+                    halign: "left"
+
+            BoxLayout:
+                orientation: "horizontal"
+
+                Label:
+                    id:  interest_daily_id
+                    text: "odsetki dziennie: 5zł"
+                    valign: "middle"
+
+                Label:
+                    id:  interest_monthly_id
+                    text: "odsetki miesiecznie"
+                    valign: "middle"
+
+                Label:
+                    id:  interest_yearly_id
+                    text: "odsetki rocznie"
+                    valign: "middle"
+

@@ -6,30 +6,46 @@
         padding: 40
         BoxLayout:
             orientation: "vertical"
-            size_hint: (None, None)
-            spacing: 10
+            size_hint: (1, 1)
+            spacing: 3
             width: 400
             height: 250
 
             BoxLayout:
                 orientation: "horizontal"
+                size_hint_y: None
+                height: 50
+
                 Label:
                     id: deposit_amount_label
-                    text: "Kapitał: "
+                    text: "Kapitał:"
                     size_hint_x: 0.3
+                    size_hint_y: None
+                    height: 50
+                    valign: "middle"
+                    halign: "right"
+                    text_size: self.size
 
                 TextInput:
                     id: deposit_input_id
                     hint_text: "Wpisz kapitał zł"
                     size_hint_x: 0.7
                     input_filter: "int"
+                    height: 50
 
             BoxLayout:
                 orientation: "horizontal"
+                size_hint_y: None
+                height: 50
                 Label:
                     id: deposit_time_label
                     text: "Czas lokaty: "
                     size_hint_x: 0.3
+                    height: 50
+                    size_hint_y: None
+                    valign: "middle"
+                    halign: "right"
+                    text_size: self.size
                 TextInput:
                     id: deposit_time_input_id
                     hint_text: "Wpisz czas lokaty w miesiącach"
@@ -38,19 +54,27 @@
 
             BoxLayout:
                 orientation: "horizontal"
-                spacing: 36
+                size_hint_y: None
+                height: 50
                 Label:
                     id: annual_interest_rate_label
                     text: "Oprocentowanie: "
                     size_hint_x: 0.3
+                    height: 50
+                    size_hint_y: None
+                    valign: "middle"
+                    halign: "right"
+                    text_size: self.size
                 TextInput:
                     id: annual_interest_rate_input_id
+                    size_hint_x: 0.7
                     hint_text: "Wpisz oprocentoawnie w %"
                     input_filter: "float"
                     on_text: root.process_intrest(self)
 
             BoxLayout:
                 orientation: "horizontal"
+                size_hint_y: None
                 spacing: 36
                 AnchorLayout:
                     anchor_x: "right"
@@ -58,6 +82,30 @@
                         text: "Oblicz"
                         size_hint: (None, None)
                         size: (80,40)
+                        on_press: root.add_some_data_test()
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: (1,1)
+
+                ScrollView:
+                    size_hint: (1,1)
+                    do_scroll_x: False
+                    do_scroll_y: True
+
+                    RecycleView:
+                        id: intrest_rate_result
+#                        viewclass: "Label"
+                        viewclass: "IntrestRateResultView" # w budowie
+                        size_hint: (1,1)
+                        effect_cls: "ScrollEffect"
+
+                        RecycleBoxLayout:
+                            orientation: "vertical"
+                            default_size_hint: (1, None)
+                            default_size: (None, 50)
+                            size_hint_y: None
+                            height: self.minimum_height
 
 
 
