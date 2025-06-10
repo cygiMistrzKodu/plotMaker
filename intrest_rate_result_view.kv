@@ -1,59 +1,123 @@
 <IntrestRateResultView>
-    GridLayout:
-        cols: 3
-        size_hint_y: None
-        height: self.minimum_height
-        spacing: 10
-        padding: [10,40,10,10]
+    AnchorLayout:
+        anchor_x: "center"
+        anchor_y: "top"
 
-        canvas.before:
-            Color:
-                rgb: 1, 1, 1, 1
-            Line:
-                width: 2
-                rounded_rectangle: self.x, self.y - 10, self.width, self.height - 10, 10
+#        canvas.before:
+#            Color:
+#                rgb: 1, 1, 1, 1
+#            Line:
+#                width: 2
+#                rounded_rectangle: self.x, self.y - 10, self.width, self.height - 10, 10
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: (1, None)
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_x: 0.5
+#                spacing: 10
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: 60
+#                    spacing: 5
+
+                    BoxLayout:
+                        size_hint_x: None
+                        width: 200
+                        spacing: 0
 
 
-        Label:
-            id: deposit_amount_result_id
-            text: "Kapitał: " + root.depositAmount + " zł"
-            valign: "middle"
-            halign: "left"
+                        Label:
+                            id: deposit_amount_result_id
+                            size_hint_x: 0.3
+                            text: "Kapitał: "
+                            halign: "left"
+                            text_size: self.size
 
-        Label:
-            id: deposit_time_result_id
-            text: "Czas: " + root.depositTime + " miesięcy"
-            valign: "middle"
-            halign: "left"
+                        Label:
+                            text: root.depositAmount + " zł"
+                            size_hint_x: 0.7
+                            halign: "left"
+                            text_size: self.size
 
-        Label:
-            id: annual_interest_rate_id
-            text: "Orpcentowanie: " +root.annualInterestRate +"%"
-            valign: "middle"
-            halign: "left"
+                    BoxLayout:
+                        size_hint_x: None
+                        width: 200
+                        spacing: 0
 
-        Widget:
-            size_hint_x: None
-            widget: 200
-        Widget:
-            size_hint_x: None
-            widget: 200
-        Widget:
-            size_hint_x: None
-            widget: 200
 
-        Label:
-            id:  interest_daily_id
-            text: "odsetki dziennie: 5zł"
-            valign: "middle"
+                        Label:
+                            id: deposit_amount_result_id
+                            size_hint_x: 0.3
+                            text: "Czas: "
+                            halign: "left"
+                            text_size: self.size
 
-        Label:
-            id:  interest_monthly_id
-            text: "odsetki miesiecznie"
-            valign: "middle"
+                        Label:
+                            text: root.depositTime + " miesięcy"
+                            size_hint_x: 0.7
+                            halign: "left"
+                            text_size: self.size
 
-        Label:
-            id:  interest_yearly_id
-            text: "odsetki rocznie"
-            valign: "middle"
+                    BoxLayout:
+                        size_hint_x: None
+                        width: 200
+                        spacing: 0
+
+
+                        Label:
+                            id: deposit_amount_result_id
+                            size_hint_x: 0.3
+                            text: "Orocentowanie: "
+                            halign: "left"
+                            text_size: self.size
+
+                        Label:
+                            text: root.annualInterestRate + "%"
+                            size_hint_x: 0.7
+                            halign: "left"
+                            text_size: self.size
+
+            BoxLayout:
+                orientation: "vertical"
+#                size_hint_x: 0.5
+
+                BoxLayout:
+                    orientation: "horizontal"
+
+                    BoxLayout:
+                        orientation: "vertical"
+
+                        Label:
+                            text: "Dzienne"
+
+                        Label:
+                            id:  interest_daily_id
+                            text: "5zł"
+                            valign: "middle"
+
+                    BoxLayout:
+                        orientation: "vertical"
+
+                        Label:
+                            text: "Miesiecznie"
+
+                        Label:
+                            id:  interest_monthly_id
+                            text: "50zł"
+                            valign: "middle"
+
+                    BoxLayout:
+                        orientation: "vertical"
+
+                        Label:
+                            text: "Rocznie"
+
+                        Label:
+                            id:  interest_monthly_id
+                            text: "50zł"
+                            valign: "middle"
 
