@@ -17,80 +17,110 @@
             BoxLayout:
                 orientation: "vertical"
                 size_hint_x: None
+                size_hint_y: None
+                height: 30
                 width: 230
-                pos_hint: {"center": 0.5}
+                padding: [0,0,0,22]
                 BoxLayout:
                     orientation: "vertical"
                     size_hint_y: None
                     height: 60
+                    size_hint_x: None
+                    width: 230
 
                     BoxLayout:
                         size_hint_x: None
+                        size_hint_y: None
                         width: 200
-                        spacing: 0
+                        height: 25
 
 
                         Label:
                             id: deposit_amount_result_id
                             size_hint_x: None
+                            size_hint_y: None
                             width: 120
                             text: "Kapitał: "
                             halign: "left"
                             text_size: self.size
+                            height: 25
 
                         Label:
                             text: root.depositAmount + " zł"
-                            size_hint_x: 0.7
+                            size_hint_x: None
+                            size_hint_y: None
+                            width: 100
                             halign: "left"
                             text_size: self.size
+                            height: 25
 
                     BoxLayout:
                         size_hint_x: None
+                        size_hint_y: None
                         width: 200
-                        spacing: 0
+                        height: 20
+#                        spacing: 0
 
 
                         Label:
                             id: deposit_amount_result_id
                             size_hint_x: None
+                            size_hint_y: None
                             width: 120
                             text: "Czas: "
                             halign: "left"
                             text_size: self.size
+                            height: 25
 
                         Label:
-                            text: root.depositTime + " miesięcy"
-                            size_hint_x: 0.7
+                            text: root.depositTime + " m."
+                            size_hint_x: None
+                            size_hint_y: None
                             halign: "left"
                             text_size: self.size
+                            height: 25
 
                     BoxLayout:
                         size_hint_x: None
+                        size_hint_y: None
                         width: 200
-                        spacing: 0
+                        height: 20
 
 
                         Label:
                             id: deposit_amount_result_id
 #                            size_hint_x: 0.3
                             size_hint_x: None
+                            size_hint_y: None
                             width: 120
                             text: "Orocentowanie: "
                             halign: "left"
                             text_size: self.size
+                            height: 25
 
                         Label:
                             text: root.annualInterestRate + "%"
-                            size_hint_x: 0.7
+                            size_hint_x: None
+                            size_hint_y: None
                             halign: "left"
                             text_size: self.size
+                            height: 25
 
             BoxLayout:
                 orientation: "vertical"
-#                size_hint_x: 0.5
 
                 BoxLayout:
                     orientation: "horizontal"
+                    Label:
+                        text_size:
+                        text: "[u]Odsetki[/u]"
+                        font_size: 18
+                        bold: True
+                        markup: True
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    padding: [0,0,0,22]
 
                     BoxLayout:
                         orientation: "vertical"
