@@ -20,7 +20,9 @@
                 size_hint_y: None
                 height: 30
                 width: 230
-                padding: [0,0,0,22]
+                pos_hint: {"center_y": 0.0}
+                spacing: 20
+#                padding: [0,50,0,0]
                 BoxLayout:
                     orientation: "vertical"
                     size_hint_y: None
@@ -32,7 +34,7 @@
                         size_hint_x: None
                         size_hint_y: None
                         width: 200
-                        height: 25
+                        height: 40
 
 
                         Label:
@@ -42,23 +44,23 @@
                             width: 120
                             text: "Kapitał: "
                             halign: "left"
+                            valign: "center"
                             text_size: self.size
-                            height: 25
+                            height: 30
 
-                        Label:
+                        TextInput:
                             text: root.depositAmount + " zł"
                             size_hint_x: None
                             size_hint_y: None
-                            width: 100
-                            halign: "left"
-                            text_size: self.size
-                            height: 25
+                            width: 150
+                            height: 30
+                            readonly: True
 
                     BoxLayout:
                         size_hint_x: None
                         size_hint_y: None
                         width: 200
-                        height: 20
+                        height: 40
 #                        spacing: 0
 
 
@@ -69,89 +71,118 @@
                             width: 120
                             text: "Czas: "
                             halign: "left"
+                            valign: "center"
                             text_size: self.size
-                            height: 25
+                            height: 30
 
-                        Label:
+                        TextInput:
                             text: root.depositTime + " m."
                             size_hint_x: None
                             size_hint_y: None
-                            halign: "left"
-                            text_size: self.size
-                            height: 25
+                            width: 150
+                            height: 30
+                            readonly: True
 
                     BoxLayout:
                         size_hint_x: None
                         size_hint_y: None
                         width: 200
-                        height: 20
-
+                        height: 40
 
                         Label:
                             id: deposit_amount_result_id
-#                            size_hint_x: 0.3
                             size_hint_x: None
                             size_hint_y: None
                             width: 120
                             text: "Orocentowanie: "
                             halign: "left"
+                            valign: "center"
                             text_size: self.size
-                            height: 25
+                            height: 30
 
-                        Label:
+                        TextInput:
                             text: root.annualInterestRate + "%"
                             size_hint_x: None
                             size_hint_y: None
-                            halign: "left"
-                            text_size: self.size
-                            height: 25
+                            width: 150
+                            height: 30
+                            readonly: True
 
             BoxLayout:
                 orientation: "vertical"
+#                size_hint_y: None
+                size_hint_x: None
+
+                Label:
+                    text: "[u]Odsetki[/u]"
+                    font_size: 18
+                    bold: True
+                    markup: True
+                    size: self.texture_size
+                    padding: [540,0,0,0]
 
                 BoxLayout:
                     orientation: "horizontal"
-                    Label:
-                        text_size:
-                        text: "[u]Odsetki[/u]"
-                        font_size: 18
-                        bold: True
-                        markup: True
-
-                BoxLayout:
-                    orientation: "horizontal"
-                    padding: [0,0,0,22]
+                    size_hint_x: None
+                    width: 580
+                    spacing: 20
+                    padding: [60,0,0,0]
 
                     BoxLayout:
                         orientation: "vertical"
+                        size_hint_y: None
+                        spacing: 5
 
                         Label:
                             text: "Dzienne"
+                            size_hint_y: None
+                            height: 20
 
-                        Label:
+                        TextInput:
                             id:  interest_daily_id
+                            size_hint_x: None
+                            size_hint_y: None
+                            width: 150
+                            height: 30
                             text: "5zł"
-                            valign: "middle"
+                            readonly: True
 
                     BoxLayout:
                         orientation: "vertical"
+                        size_hint_y: None
+                        spacing: 5
 
                         Label:
                             text: "Miesiecznie"
+                            size_hint_y: None
+                            height: 20
 
-                        Label:
+                        TextInput:
                             id:  interest_monthly_id
+                            size_hint_x: None
+                            size_hint_y: None
+                            height: 30
+                            width: 150
                             text: "50zł"
-                            valign: "middle"
+                            readonly: True
 
                     BoxLayout:
                         orientation: "vertical"
+                        size_hint_y: None
+                        spacing: 5
 
                         Label:
                             text: "Rocznie"
+                            size_hint_y: None
+                            height: 20
 
-                        Label:
-                            id:  interest_monthly_id
+                        TextInput:
+                            id:  interest_yearly_id
+                            size_hint_x: None
+                            size_hint_y: None
+                            height: 30
+                            width: 150
                             text: "50zł"
-                            valign: "middle"
+                            readonly: True
+
 
