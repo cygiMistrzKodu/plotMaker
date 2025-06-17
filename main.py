@@ -8,6 +8,18 @@ from kivy.uix.textinput import TextInput
 # noinspection PyUnresolvedReferences
 from intrest_rate_result_view import IntrestRateResultView  # used in .kv
 
+from kivy.core.window import Window
+
+Window.minimum_width = 760
+
+Window.maximum_width = 900  # czego nie działą ??
+
+Window.minimum_height = 450
+
+Window.maximum_height = 800   # to nie działą ??
+
+Window.size = (760, 450)
+
 
 class PlotMakerApp(App):
     def build(self):
