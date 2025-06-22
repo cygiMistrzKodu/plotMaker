@@ -10,7 +10,7 @@ from intrest_rate_result_view import IntrestRateResultView  # used in .kv
 
 from kivy.core.window import Window
 
-Window.minimum_width = 760
+Window.minimum_width = 795
 Window.minimum_height = 450
 Window.size = (760, 450)
 
