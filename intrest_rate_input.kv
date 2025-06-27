@@ -10,16 +10,16 @@
 
             canvas.before:
                 Color:
-                    rgba: 0.2, 0.25, 0.35, 1
+                    rgba: 0.11, 0.14, 0.2, 1
                 RoundedRectangle:
                     pos: self.x - 8, self.y - 10
                     size: self.width + 10, self.height + 20
                     radius: [12]
                 Color:
-                    rgba: 0, 0, 0, 0.07
+                    rgba: 1.0, 0.85, 0.25, 0.35
                 Line:
-                    width: 1.2
-                    rounded_rectangle: (self.x + 1, self.y + 1, self.width - 2, self.height - 2, 50)
+                    width: 1.5
+                    rounded_rectangle: (self.x -5, self.y - 6, self.width + 6, self.height + 12, 20)
 
             BoxLayout:
                 orientation: "horizontal"
