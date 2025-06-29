@@ -12,4 +12,4 @@ class IntrestRateResultView(BoxLayout):
 
     annualIntrestRateResult = StringProperty("")
     monthlyIntrestRateResult = StringProperty("")
-    DailyIntrestRateResult = StringProperty("")
+    dailyIntrestRateResult = StringProperty("")
