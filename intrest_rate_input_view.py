@@ -8,7 +8,7 @@ from kivy.uix.textinput import TextInput
 class DepositType(TypedDict):
     depositAmount: str
     depositTime: str
-    annualInterestRate: str
+    bankInterestRate: str
 
 
 Builder.load_file("intrest_rate_input.kv")
@@ -35,7 +35,7 @@ class IntrestRateInput(BoxLayout):
         data: DepositType = {
             "depositAmount": self.ids.deposit_input_id.text,
             "depositTime": self.ids.deposit_time_input_id.text,
-            "annualInterestRate": self.ids.annual_interest_rate_input_id.text
+            "bankInterestRate": self.ids.bank_interest_rate_input_id.text
         }
         return data
 
@@ -44,8 +44,6 @@ class IntrestRateInput(BoxLayout):
 
         if self.ids.intrest_rate_result.data is None:
             self.ids.intrest_rate_result.data = []
-
-            # ToDO dostosować wyjście do moich preferencji czyli najpierw dla jakich danych obliczenia a potem odsetkii z tego
 
         self.ids.intrest_rate_result.data.insert(0, deposit_input)
 
