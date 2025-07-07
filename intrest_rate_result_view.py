@@ -7,9 +7,9 @@ Builder.load_file("intrest_rate_result_view.kv")
 
 class IntrestRateResultView(BoxLayout):
     depositAmount = StringProperty("")
-    depositTime = StringProperty("")
+    depositTimeMonths = StringProperty("")
     bankInterestRate = StringProperty("")
 
-    annualIntrestRateResult = StringProperty("na rok")
-    monthlyIntrestRateResult = StringProperty("na miech")
-    dailyIntrestRateResult = StringProperty("876")
+    annualIntrestRateIncrease = StringProperty("na rok")
+    monthlyIntrestRateIncrease = StringProperty("na miech")
+    dailyIntrestRateIncrease = StringProperty("876")

@@ -83,7 +83,7 @@
                             height: 30
 
                         TextInput:
-                            text: root.depositTime
+                            text: root.depositTimeMonths
                             size_hint_x: None
                             size_hint_y: None
                             width: 100
@@ -145,8 +145,8 @@
                             height: 20
 
                         TextInput:
-                            id:  interest_daily_id
-                            text: root.dailyIntrestRateResult
+                            id:  daily_interest_rate_result_id
+                            text: root.dailyIntrestRateIncrease
                             size_hint_x: None
                             size_hint_y: None
                             width: 100
@@ -164,12 +164,12 @@
                             height: 20
 
                         TextInput:
-                            id:  interest_monthly_id
+                            id:  monthly_interest_rate_result_id
                             size_hint_x: None
                             size_hint_y: None
                             height: 30
                             width: 100
-                            text: root.monthlyIntrestRateResult
+                            text: root.monthlyIntrestRateIncrease
                             readonly: True
 
                     BoxLayout:
@@ -183,12 +183,12 @@
                             height: 20
 
                         TextInput:
-                            id:  interest_yearly_id
+                            id:  annual_interest_rate_yearly_id
                             size_hint_x: None
                             size_hint_y: None
                             height: 30
                             width: 100
-                            text: root.annualIntrestRateResult
+                            text: root.annualIntrestRateIncrease
                             readonly: True
 
 
