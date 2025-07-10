@@ -8,7 +8,7 @@
             orientation: "horizontal"
             size_hint: (None, None)
             width: 700
-            height: self.minimum_height + 70
+            height: self.minimum_height + 160
             width: self.minimum_width + 360
 
             canvas.before:
@@ -16,11 +16,11 @@
                     rgba: 0.9, 0.9, 0.9, 1
                 Line:
                     width: 1.5
-                    rounded_rectangle: (self.x - 8, self.y - 30, self.width + 10, self.height + 50, 10)
+                    rounded_rectangle: (self.x - 8, self.y - 30, self.width, self.height + 50, 10)
                 Color:
                     rgba: 0.98, 0.98, 1, 0.04
                 RoundedRectangle:
-                    pos: self.pos
+                    pos: self.x, self.y -20
                     size: self.size
                     radius: [10]
 
@@ -126,6 +126,33 @@
                     markup: True
                     size: self.texture_size
                     padding: [430,0,0,0]
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint_x: None
+                    width: 440
+                    spacing: 20
+
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint_x: 0.5
+
+                        Label:
+                            text: "Odsetki brutto"
+
+                        TextInput:
+                            text: "9456"
+
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint_x: 0.5
+
+                        Label:
+                            text: "Odsetki netto"
+
+                        TextInput:
+                            text: "7777"
+
 
                 BoxLayout:
                     orientation: "horizontal"
