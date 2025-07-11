@@ -157,14 +157,14 @@
                 BoxLayout:
                     orientation: "horizontal"
                     size_hint_x: None
-                    width: 450
+                    width: 440
                     spacing: 20
-                    padding: [90,0,0,0]
 
                     BoxLayout:
                         orientation: "vertical"
                         size_hint_y: None
                         spacing: 5
+                        size_hint_x: 1
 
                         Label:
                             text: "Dzienne"
@@ -174,9 +174,7 @@
                         TextInput:
                             id:  daily_interest_rate_increase_id
                             text: root.dailyIntrestRateIncrease
-                            size_hint_x: None
                             size_hint_y: None
-                            width: 100
                             height: 30
                             readonly: True
 
@@ -184,6 +182,7 @@
                         orientation: "vertical"
                         size_hint_y: None
                         spacing: 5
+                        size_hint_x: 1
 
                         Label:
                             text: "Miesięcznie"
@@ -192,10 +191,8 @@
 
                         TextInput:
                             id:  monthly_interest_rate_Increase_id
-                            size_hint_x: None
                             size_hint_y: None
                             height: 30
-                            width: 100
                             text: root.monthlyIntrestRateIncrease
                             readonly: True
 
@@ -203,6 +200,7 @@
                         orientation: "vertical"
                         size_hint_y: None
                         spacing: 5
+                        size_hint_x: 1
 
                         Label:
                             text: "Rocznie"
@@ -211,10 +209,8 @@
 
                         TextInput:
                             id:  annual_interest_rate_Increase_id
-                            size_hint_x: None
                             size_hint_y: None
                             height: 30
-                            width: 100
                             text: root.annualIntrestRateIncrease
                             readonly: True
 
