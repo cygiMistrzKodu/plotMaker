@@ -16,12 +16,14 @@ class DepositType(TypedDict):
     annualIntrestRateIncrease: NotRequired[str]
     monthlyIntrestRateIncrease: NotRequired[str]
     dailyIntrestRateIncrease: NotRequired[str]
+    intrestRateNet: NotRequired[str]
+    intrestRateGross: NotRequired[str]
 
 
-Builder.load_file("intrest_rate_input.kv")
+Builder.load_file("interest_rate_input.kv")
 
 
-class IntrestRateInput(BoxLayout):
+class InterestRateInput(BoxLayout):
 
     def process_intrest(self, text_input: TextInput):
         self.validate_in_percent_range(text_input)
@@ -60,11 +62,6 @@ class IntrestRateInput(BoxLayout):
                                          * ((Decimal(bank_interest_rate) / 100) / 12))
 
         daly_intrest_rate_increase = Decimal(deposit_amount) * (Decimal(bank_interest_rate) / 100 / 365)
-
-        # przemyślnie  Wynik z odsetkami i ile w sumie będzie miał to jedno pole.
-        # a te 3 jak sobie podzieliłem dzienne, miesięczne i roczne do licze jak dla jednego miesiaca
-        # wynik ile odsetek do 2 pola: jedno ile dostaniesz odsetek. a drugie ile dostanie odestek odejmując podatek belki
-        # może być też pole jaka jest cała kwota całośćiowa i drugie pole odejmujące podatek belki
 
         if self.ids.intrest_rate_result.data is None:
             self.ids.intrest_rate_result.data = []
