@@ -63,13 +63,21 @@ class InterestRateInput(BoxLayout):
 
         daly_intrest_rate_increase = Decimal(deposit_amount) * (Decimal(bank_interest_rate) / 100 / 365)
 
+        intrest_rate_gross = ((Decimal(deposit_amount) * (Decimal(bank_interest_rate) / 100))
+                              * (Decimal(deposit_time_months)) / 12)
+
+        intrest_rate_net = intrest_rate_gross * Decimal(0.81)
+
         if self.ids.intrest_rate_result.data is None:
             self.ids.intrest_rate_result.data = []
 
         intrest_rate_result.update(
             {"dailyIntrestRateIncrease": f"{daly_intrest_rate_increase:.3f}",
              "monthlyIntrestRateIncrease": f"{monthly_intrest_rate_increase:.3f}",
-             "annualIntrestRateIncrease": f"{annual_intrest_rate_increase:.3f}"})
+             "annualIntrestRateIncrease": f"{annual_intrest_rate_increase:.3f}",
+             "intrestRateGross": f"{intrest_rate_gross:.3f}",
+             "intrestRateNet": f"{intrest_rate_net:.3f}",
+             })
 
         self.ids.intrest_rate_result.data.insert(0, intrest_rate_result)
 

@@ -13,3 +13,6 @@ class InterestRateResultView(BoxLayout):
     annualIntrestRateIncrease = StringProperty("na rok")
     monthlyIntrestRateIncrease = StringProperty("na miech")
     dailyIntrestRateIncrease = StringProperty("876")
+
+    intrestRateNet = StringProperty("empty")
+    intrestRateGross = StringProperty("empty")
