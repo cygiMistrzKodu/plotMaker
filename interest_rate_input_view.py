@@ -4,20 +4,17 @@ from typing import TypedDict, NotRequired
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
-from decimal import Decimal, getcontext
+from decimal import getcontext
+
+from interest_rate.calculator import InterestRateCalculator
 
 getcontext().prec = 100
 
 
-class DepositType(TypedDict):
+class UserDeposit(TypedDict):
     depositAmount: str
     depositTimeMonths: str
     bankInterestRate: str
-    annualIntrestRateIncrease: NotRequired[str]
-    monthlyIntrestRateIncrease: NotRequired[str]
-    dailyIntrestRateIncrease: NotRequired[str]
-    intrestRateNet: NotRequired[str]
-    intrestRateGross: NotRequired[str]
 
 
 Builder.load_file("interest_rate_input.kv")
@@ -41,46 +38,27 @@ class InterestRateInput(BoxLayout):
             text_input.foreground_color = (1, 0, 0, 1)
 
     def get_user_input(self):
-        data: DepositType = {
+        data: UserDeposit = {
             "depositAmount": self.ids.deposit_input_id.text,
             "depositTimeMonths": self.ids.deposit_time_input_id.text,
             "bankInterestRate": self.ids.bank_interest_rate_input_id.text
         }
         return data
 
-    def add_some_data_test(self):
+    def get_deposit_data(self) -> UserDeposit:
+        return self.get_user_input()
 
-        intrest_rate_result: DepositType = self.get_user_input()
+    def calculate_interest(self, deposit_data: UserDeposit) -> dict:
 
-        deposit_amount = intrest_rate_result["depositAmount"]
-        deposit_time_months = intrest_rate_result["depositTimeMonths"]
-        bank_interest_rate = intrest_rate_result["bankInterestRate"]
+        interest_rate_calculator = InterestRateCalculator(deposit_data["depositAmount"]
+                                                          , deposit_data["depositTimeMonths"],
+                                                          deposit_data["bankInterestRate"])
 
-        annual_intrest_rate_increase = (Decimal(deposit_amount) * (Decimal(bank_interest_rate) / 100))
+        return interest_rate_calculator.calculate()
 
-        monthly_intrest_rate_increase = (Decimal(deposit_amount)
-                                         * ((Decimal(bank_interest_rate) / 100) / 12))
-
-        daly_intrest_rate_increase = Decimal(deposit_amount) * (Decimal(bank_interest_rate) / 100 / 365)
-
-        intrest_rate_gross = ((Decimal(deposit_amount) * (Decimal(bank_interest_rate) / 100))
-                              * (Decimal(deposit_time_months)) / 12)
-
-        intrest_rate_net = intrest_rate_gross * Decimal(0.81)
+    def calculate_interest_rate(self):
 
         if self.ids.intrest_rate_result.data is None:
             self.ids.intrest_rate_result.data = []
 
-        intrest_rate_result.update(
-            {"dailyIntrestRateIncrease": f"{daly_intrest_rate_increase:.3f}",
-             "monthlyIntrestRateIncrease": f"{monthly_intrest_rate_increase:.3f}",
-             "annualIntrestRateIncrease": f"{annual_intrest_rate_increase:.3f}",
-             "intrestRateGross": f"{intrest_rate_gross:.3f}",
-             "intrestRateNet": f"{intrest_rate_net:.3f}",
-             })
-
-        self.ids.intrest_rate_result.data.insert(0, intrest_rate_result)
-
-        print(self.ids.keys())
-
-        print("Dodano dane do RecycleView!")
+        self.ids.intrest_rate_result.data.insert(0, self.calculate_interest(self.get_deposit_data()))
