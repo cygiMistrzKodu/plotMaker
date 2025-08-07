@@ -1,5 +1,4 @@
-from numbers import Number
-from typing import TypedDict, NotRequired
+from interfaces.user_deposit import UserDeposit
 
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
@@ -10,15 +9,7 @@ from interest_rate.calculator import InterestRateCalculator
 
 getcontext().prec = 100
 
-
-class UserDeposit(TypedDict):
-    depositAmount: str
-    depositTimeMonths: str
-    bankInterestRate: str
-
-
 Builder.load_file("interest_rate_input.kv")
-
 
 class InterestRateInput(BoxLayout):
 
