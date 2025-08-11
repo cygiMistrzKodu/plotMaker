@@ -183,6 +183,7 @@ def test_bank_interest_rate_cannot_be_bigger_than_100(user_deposit_validator):
     message = user_deposit_validator.validate_bank_interest_rate("101")
     assert message == CANNOT_BE_BIGGER_THAN_100_PERCENT
 
+
 def test_bank_interest_rate_100_is_ok(user_deposit_validator):
     message = user_deposit_validator.validate_bank_interest_rate("100")
     assert message is None
@@ -332,7 +333,7 @@ def test_all_fields_have_values_below_zero_then_all_have_bellow_zero_error_messa
     }
 
 
-def test_field_bank_interest_rate_have_values_above_100_deposit_amount_is_empty_and_deposit_time_months_bellow_zero_then_errors_messages_accordingly(
+def test_fields_values_above_100_and_is_empty_and_bellow_zero_then_errors_messages_accordingly(
         user_deposit_validator):
     deposit: UserDeposit = {
         "depositAmount": "",
