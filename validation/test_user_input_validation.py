@@ -78,6 +78,8 @@ class UserDepositValidator:
 
     def validate_deposit_form(self, deposit: UserDeposit):
 
+        deposit = self._fill_missing_keys(deposit, ["depositAmount", "depositTimeMonths", "bankInterestRate"])
+
         errors: dict[str, str] = {"depositAmountError": self.validate_deposit_amount(deposit["depositAmount"]),
                                   "depositTimeMonthsError": self.validate_deposit_time(deposit["depositTimeMonths"]),
                                   "bankInterestRateError": self.validate_bank_interest_rate(
@@ -86,6 +88,11 @@ class UserDepositValidator:
         errors = self._remove_keys_with_none(errors)
 
         return errors if errors else None
+
+    def _fill_missing_keys(self, data: UserDeposit, require_keys: list[str]) -> dict:
+        for key in require_keys:
+            data.setdefault(key, "")
+        return data
 
     def _remove_keys_with_none(self, errors):
         errors = {key: value for key, value in errors.items() if
@@ -347,4 +354,45 @@ def test_fields_values_above_100_and_is_empty_and_bellow_zero_then_errors_messag
         "depositAmountError": EMPTY_FILED_MESSAGE,
         "depositTimeMonthsError": CANNOT_BE_ZERO_OR_BELOW_MESSAGE,
         "bankInterestRateError": CANNOT_BE_BIGGER_THAN_100_PERCENT
+    }
+
+
+def test_empty_dictionary_should_return_on_all_fields_empty_errors_message(
+        user_deposit_validator):
+    deposit: UserDeposit = {}
+
+    errors = user_deposit_validator.validate_deposit_form(deposit)
+
+    assert errors == {
+        "depositAmountError": EMPTY_FILED_MESSAGE,
+        "depositTimeMonthsError": EMPTY_FILED_MESSAGE,
+        "bankInterestRateError": EMPTY_FILED_MESSAGE
+    }
+
+
+def test_one_right_key_in_input_dictionary_should_return_on_rest_fields_empty_errors_message(
+        user_deposit_validator):
+    deposit: UserDeposit = {
+        "depositAmount": "4",
+    }
+
+    errors = user_deposit_validator.validate_deposit_form(deposit)
+
+    assert errors == {
+        "depositTimeMonthsError": EMPTY_FILED_MESSAGE,
+        "bankInterestRateError": EMPTY_FILED_MESSAGE
+    }
+
+
+def test_two_right_key_in_input_dictionary_one_is_missing_should_return_empty_errors_message_on_that_filed(
+        user_deposit_validator):
+    deposit: UserDeposit = {
+        "depositAmount": "4",
+        "bankInterestRate": "68"
+    }
+
+    errors = user_deposit_validator.validate_deposit_form(deposit)
+
+    assert errors == {
+        "depositTimeMonthsError": EMPTY_FILED_MESSAGE,
     }
