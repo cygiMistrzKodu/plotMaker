@@ -1,3 +1,5 @@
+from kivy.properties import StringProperty
+
 from interfaces.user_deposit import UserDeposit
 
 from kivy.lang import Builder
@@ -6,27 +8,42 @@ from kivy.uix.textinput import TextInput
 from decimal import getcontext
 
 from interest_rate.calculator import InterestRateCalculator
+from validation.user_deposit_validation import UserDepositValidator
 
 getcontext().prec = 100
 
 Builder.load_file("interest_rate_input.kv")
 
+
 class InterestRateInput(BoxLayout):
+    depositAmountError = StringProperty("Test1")
+    depositTimeMonthsError = StringProperty("test2")
+    bankInterestRateError = StringProperty("test3")
 
-    def process_intrest(self, text_input: TextInput):
-        self.validate_in_percent_range(text_input)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.user_deposit_validator = UserDepositValidator()
 
-    def validate_in_percent_range(self, text_input: TextInput):
-        try:
-            interest = float(text_input.text.strip("%"))
+    def validate_deposit_amount(self, text_input: TextInput):
+        error = self.user_deposit_validator.validate_deposit_amount(text_input)
+        if error:
+            self.depositAmountError = error
+        else:
+            self.depositAmountError = ""
 
-            if interest > 100 or interest < 0:
-                text_input.foreground_color = (1, 0, 0, 1)
-            else:
-                text_input.foreground_color = (0, 0, 0, 1)
+    def validate_deposit_time(self, text_input: TextInput):
+        error = self.user_deposit_validator.validate_deposit_time(text_input)
+        if error:
+            self.depositTimeMonthsError = error
+        else:
+            self.depositTimeMonthsError = ""
 
-        except ValueError:
-            text_input.foreground_color = (1, 0, 0, 1)
+    def validate_bank_interest_rate(self, text_input: TextInput):
+        error = self.user_deposit_validator.validate_bank_interest_rate(text_input)
+        if error:
+            self.bankInterestRateError = error
+        else:
+            self.bankInterestRateError = ""
 
     def get_user_input(self):
         data: UserDeposit = {

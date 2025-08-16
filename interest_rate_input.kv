@@ -46,6 +46,18 @@
                     input_filter: "int"
                     height: 35
                     width: 150
+                    on_text: root.validate_deposit_amount(self.text)
+
+                Label:
+                    id: deposit_amount_error_id
+                    text: root.depositAmountError
+                    size_hint_x: None
+                    halign: "left"
+                    valign: "middle"
+                    width: 250
+                    color: 1, 0.2, 0.2, 1
+                    text_size: self.size
+
 
             BoxLayout:
                 orientation: "horizontal"
@@ -68,6 +80,17 @@
                     input_filter: "int"
                     size_hint_x: None
                     width: 150
+                    on_text: root.validate_deposit_time(self.text)
+                Label:
+                    id: deposit_time_error_id
+                    text: root.depositTimeMonthsError
+                    size_hint_x: None
+                    halign: "left"
+                    valign: "middle"
+                    width: 250
+                    color: 1, 0.2, 0.2, 1
+                    text_size: self.size
+
 
             BoxLayout:
                 orientation: "horizontal"
@@ -90,10 +113,20 @@
                     size_hint_x: None
                     hint_text: "Oprocentoawnie w %"
                     input_filter: "float"
-                    on_text: root.process_intrest(self)
                     valign: "middle"
                     halign: "left"
                     width: 150
+                    on_text: root.validate_bank_interest_rate(self.text)
+                Label:
+                    id: bank_interest_rate_error_id
+                    text: root.bankInterestRateError
+                    size_hint_x: None
+                    halign: "left"
+                    valign: "middle"
+                    width: 250
+                    color: 1, 0.2, 0.2, 1
+                    text_size: self.size
+
 
             BoxLayout:
                 orientation: "horizontal"
