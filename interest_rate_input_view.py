@@ -1,3 +1,5 @@
+from typing import TypeAlias
+
 from kivy.properties import StringProperty
 
 from interfaces.user_deposit import UserDeposit
@@ -13,6 +15,8 @@ from validation.user_deposit_validation import UserDepositValidator
 getcontext().prec = 100
 
 Builder.load_file("interest_rate_input.kv")
+
+DepositErrors: TypeAlias = dict[str, str]
 
 
 class InterestRateInput(BoxLayout):
@@ -45,7 +49,7 @@ class InterestRateInput(BoxLayout):
         else:
             self.bankInterestRateError = ""
 
-    def get_user_input(self):
+    def get_user_input(self) -> UserDeposit:
         data: UserDeposit = {
             "depositAmount": self.ids.deposit_input_id.text,
             "depositTimeMonths": self.ids.deposit_time_input_id.text,
@@ -53,8 +57,15 @@ class InterestRateInput(BoxLayout):
         }
         return data
 
-    def get_deposit_data(self) -> UserDeposit:
-        return self.get_user_input()
+    def get_deposit_data(self) -> tuple[UserDeposit | None, DepositErrors]:
+
+        user_deposit_input = self.get_user_input()
+        errors = self.user_deposit_validator.validate_deposit_form(user_deposit_input)
+
+        if errors:
+            return None, errors
+        else:
+            return user_deposit_input, {}
 
     def calculate_interest(self, deposit_data: UserDeposit) -> dict:
 
@@ -66,7 +77,15 @@ class InterestRateInput(BoxLayout):
 
     def calculate_interest_rate(self):
 
+        deposit_data, errors = self.get_deposit_data()
+
+        for field in ["depositAmountError", "depositTimeMonthsError", "bankInterestRateError"]:
+            setattr(self, field, errors.get(field, ""))
+
+        if errors:
+            return
+
         if self.ids.intrest_rate_result.data is None:
             self.ids.intrest_rate_result.data = []
 
-        self.ids.intrest_rate_result.data.insert(0, self.calculate_interest(self.get_deposit_data()))
+        self.ids.intrest_rate_result.data.insert(0, self.calculate_interest(deposit_data))

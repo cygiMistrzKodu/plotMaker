@@ -74,7 +74,7 @@ class UserDepositValidator:
 
         return None
 
-    def validate_deposit_form(self, deposit: UserDeposit):
+    def validate_deposit_form(self, deposit: UserDeposit) -> None | dict[str, str]:
 
         deposit = self._fill_missing_keys(deposit, ["depositAmount", "depositTimeMonths", "bankInterestRate"])
 
