@@ -20,9 +20,9 @@ DepositErrors: TypeAlias = dict[str, str]
 
 
 class InterestRateInput(BoxLayout):
-    depositAmountError = StringProperty("Test1")
-    depositTimeMonthsError = StringProperty("test2")
-    bankInterestRateError = StringProperty("test3")
+    depositAmountError = StringProperty("")
+    depositTimeMonthsError = StringProperty("")
+    bankInterestRateError = StringProperty("")
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -58,14 +58,9 @@ class InterestRateInput(BoxLayout):
         return data
 
     def get_deposit_data(self) -> tuple[UserDeposit | None, DepositErrors]:
-
         user_deposit_input = self.get_user_input()
         errors = self.user_deposit_validator.validate_deposit_form(user_deposit_input)
-
-        if errors:
-            return None, errors
-        else:
-            return user_deposit_input, {}
+        return (None, errors) if errors else (user_deposit_input, {})
 
     def calculate_interest(self, deposit_data: UserDeposit) -> dict:
 
@@ -79,13 +74,18 @@ class InterestRateInput(BoxLayout):
 
         deposit_data, errors = self.get_deposit_data()
 
-        for field in ["depositAmountError", "depositTimeMonthsError", "bankInterestRateError"]:
-            setattr(self, field, errors.get(field, ""))
+        self._update_error_labels(errors)
 
         if errors:
             return
 
+        self._append_interest_rate_result(deposit_data)
+
+    def _update_error_labels(self, errors):
+        for field in ["depositAmountError", "depositTimeMonthsError", "bankInterestRateError"]:
+            setattr(self, field, errors.get(field, ""))
+
+    def _append_interest_rate_result(self, deposit_data):
         if self.ids.intrest_rate_result.data is None:
             self.ids.intrest_rate_result.data = []
-
         self.ids.intrest_rate_result.data.insert(0, self.calculate_interest(deposit_data))
