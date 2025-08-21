@@ -47,6 +47,7 @@
                     height: 35
                     width: 150
                     on_text: root.validate_deposit_amount(self.text)
+                    background_color: (1, 0.9, 0.9, 1) if root.depositAmountError else (1, 1, 1, 1)
 
                 Label:
                     id: deposit_amount_error_id
@@ -81,6 +82,7 @@
                     size_hint_x: None
                     width: 150
                     on_text: root.validate_deposit_time(self.text)
+                    background_color: (1, 0.9, 0.9, 1) if root.depositTimeMonthsError else (1, 1, 1, 1)
                 Label:
                     id: deposit_time_error_id
                     text: root.depositTimeMonthsError
@@ -117,6 +119,7 @@
                     halign: "left"
                     width: 150
                     on_text: root.validate_bank_interest_rate(self.text)
+                    background_color: (1, 0.9, 0.9, 1) if root.bankInterestRateError else (1, 1, 1, 1)
                 Label:
                     id: bank_interest_rate_error_id
                     text: root.bankInterestRateError
