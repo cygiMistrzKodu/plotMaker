@@ -133,35 +133,31 @@
                         BoxLayout:
                             orientation: "vertical"
                             size_hint_y: None
+                            size_hint_x: 1
+                            spacing: 5
 
                             Label:
-                                text: "Dzienne"
+                                text: "Dzienne brutto"
                                 size_hint_y: None
                                 height: 20
 
                             TextInput:
-                                id:  daily_interest_rate_increase_id
+                                id:  daily_interest_rate_gross_increase_id
                                 text: root.dailyIntrestRateIncreaseGross
                                 size_hint_y: None
                                 height: 30
                                 readonly: True
 
-                        BoxLayout:
-                            orientation: "vertical"
-                            size_hint_y: None
-                            spacing: 5
-                            size_hint_x: 1
-
                             Label:
-                                text: "Miesięcznie"
+                                text: "Dzienne netto"
                                 size_hint_y: None
                                 height: 20
 
                             TextInput:
-                                id:  monthly_interest_rate_Increase_id
+                                id:  daily_interest_rate_net_increase_id
+                                text: root.dailyIntrestRateIncreaseNet
                                 size_hint_y: None
                                 height: 30
-                                text: root.monthlyIntrestRateIncreaseGross
                                 readonly: True
 
                         BoxLayout:
@@ -171,15 +167,57 @@
                             size_hint_x: 1
 
                             Label:
-                                text: "Rocznie"
+                                text: "Miesięcznie brutto"
                                 size_hint_y: None
                                 height: 20
 
                             TextInput:
-                                id:  annual_interest_rate_Increase_id
+                                id:  monthly_interest_rate_gross_increase_id
+                                size_hint_y: None
+                                height: 30
+                                text: root.monthlyIntrestRateIncreaseGross
+                                readonly: True
+
+                            Label:
+                                text: "Miesięcznie netto"
+                                size_hint_y: None
+                                height: 20
+
+                            TextInput:
+                                id:  monthly_interest_rate_net_increase_id
+                                size_hint_y: None
+                                height: 30
+                                text: root.monthlyIntrestRateIncreaseNet
+                                readonly: True
+
+                        BoxLayout:
+                            orientation: "vertical"
+                            size_hint_y: None
+                            spacing: 5
+                            size_hint_x: 1
+
+                            Label:
+                                text: "Rocznie brutto"
+                                size_hint_y: None
+                                height: 20
+
+                            TextInput:
+                                id:  annual_interest_rate_gross_increase_id
                                 size_hint_y: None
                                 height: 30
                                 text: root.annualIntrestRateIncreaseGross
+                                readonly: True
+
+                            Label:
+                                text: "Rocznie netto"
+                                size_hint_y: None
+                                height: 20
+
+                            TextInput:
+                                id:  annual_interest_rate_net_increase_id
+                                size_hint_y: None
+                                height: 30
+                                text: root.annualIntrestRateIncreaseNet
                                 readonly: True
 
 
