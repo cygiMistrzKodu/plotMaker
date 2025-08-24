@@ -22,5 +22,6 @@ class InterestRateResultView(BoxLayout):
     monthlyIntrestRateIncreaseTax = StringProperty("")
     dailyIntrestRateIncreaseTax = StringProperty("")
 
-    intrestRateNet = StringProperty("empty")
-    intrestRateGross = StringProperty("empty")
+    intrestRateGross = StringProperty("")
+    intrestRateNet = StringProperty("")
+    intrestRateTax = StringProperty("")
