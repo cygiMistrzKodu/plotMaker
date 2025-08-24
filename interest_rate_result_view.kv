@@ -160,6 +160,18 @@
                                 height: 30
                                 readonly: True
 
+                            Label:
+                                text: "podatek dziennie"
+                                size_hint_y: None
+                                height: 20
+
+                            TextInput:
+                                id:  daily_interest_rate_tax_increase_id
+                                text: root.dailyIntrestRateIncreaseTax
+                                size_hint_y: None
+                                height: 30
+                                readonly: True
+
                         BoxLayout:
                             orientation: "vertical"
                             size_hint_y: None
@@ -190,6 +202,18 @@
                                 text: root.monthlyIntrestRateIncreaseNet
                                 readonly: True
 
+                            Label:
+                                text: "Podatek miesięcznie"
+                                size_hint_y: None
+                                height: 20
+
+                            TextInput:
+                                id:  monthly_interest_rate_tax_increase_id
+                                size_hint_y: None
+                                height: 30
+                                text: root.monthlyIntrestRateIncreaseTax
+                                readonly: True
+
                         BoxLayout:
                             orientation: "vertical"
                             size_hint_y: None
@@ -218,6 +242,18 @@
                                 size_hint_y: None
                                 height: 30
                                 text: root.annualIntrestRateIncreaseNet
+                                readonly: True
+
+                            Label:
+                                text: "Podatek rocznie"
+                                size_hint_y: None
+                                height: 20
+
+                            TextInput:
+                                id:  annual_interest_rate_tax_increase_id
+                                size_hint_y: None
+                                height: 30
+                                text: root.annualIntrestRateIncreaseTax
                                 readonly: True
 
 
