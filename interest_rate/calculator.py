@@ -13,6 +13,9 @@ class InterestRateCalculator:
         tax_amount_from_interest = gross * tax_from_income_percent
         net = gross - tax_amount_from_interest
 
+        gross_capital_with_interest = self.amount + gross
+        net_capital_with_interest = self.amount + net
+
         annual_increase_gross = self.amount * (self.interest_rate / 100)
         tax_from_annual_increase = tax_from_income_percent * annual_increase_gross
         annual_increase_net = annual_increase_gross - tax_from_annual_increase
@@ -24,6 +27,7 @@ class InterestRateCalculator:
         daily_increase_gross = self.amount * (self.interest_rate / 100) / 365
         tax_from_daily_increase = tax_from_income_percent * daily_increase_gross
         daily_increase_net = daily_increase_gross - tax_from_daily_increase
+
 
         return {
             "depositAmount": f"{self.amount}",
@@ -40,5 +44,7 @@ class InterestRateCalculator:
             "monthlyIntrestRateIncreaseTax": f"{tax_from_monthly_increase:.3f}",
             "dailyIntrestRateIncreaseGross": f"{daily_increase_gross:.3f}",
             "dailyIntrestRateIncreaseNet": f"{daily_increase_net:.3f}",
-            "dailyIntrestRateIncreaseTax": f"{tax_from_daily_increase:.3f}"
+            "dailyIntrestRateIncreaseTax": f"{tax_from_daily_increase:.3f}",
+            "grossCapitalWithInterest": f"{gross_capital_with_interest:.3f}",
+            "netCapitalWithInterest": f"{net_capital_with_interest:.3f}"
         }

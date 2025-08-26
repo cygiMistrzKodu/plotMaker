@@ -10,6 +10,9 @@ class InterestRateResultView(BoxLayout):
     depositTimeMonths = StringProperty("")
     bankInterestRate = StringProperty("")
 
+    grossCapitalWithInterest = StringProperty("")
+    netCapitalWithInterest = StringProperty("")
+
     annualIntrestRateIncreaseGross = StringProperty("")
     monthlyIntrestRateIncreaseGross = StringProperty()
     dailyIntrestRateIncreaseGross = StringProperty("")

@@ -67,3 +67,13 @@ def test_can_calculate_tax_from_daily_increase_in_interest_rate():
     calc = InterestRateCalculator("450000", "6", "4")
     result = calc.calculate()
     assert result["dailyIntrestRateIncreaseTax"] == "9.370"
+
+def test_can_calculate_gross_capital_with_interest():
+    calc = InterestRateCalculator("450000", "6", "4")
+    result = calc.calculate()
+    assert result["grossCapitalWithInterest"] == "459000.000"
+
+def test_can_calculate_net_capital_with_interest():
+    calc = InterestRateCalculator("450000", "6", "4")
+    result = calc.calculate()
+    assert result["netCapitalWithInterest"] == "457290.000"

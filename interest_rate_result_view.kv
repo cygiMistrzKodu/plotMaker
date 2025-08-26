@@ -38,11 +38,11 @@
                     padding: [10,0,0,0]
                     width: 230
                     spacing: 20
-                    size_hint_y: 0.8
+                    size_hint_y: 0.9
 
                     BoxLayout:
                         orientation: "vertical"
-                        spacing: 10
+                        spacing: 20
 
                         BoxLayout:
                             size_hint_y: 1
@@ -91,6 +91,39 @@
                                 text: root.bankInterestRate
                                 size_hint_x: 1
                                 readonly: True
+
+                        BoxLayout:
+                            size_hint_y: 1
+
+                            Label:
+                                id: capital_with_interest_gross_label
+                                text: "Zysk brutto"
+                                text_size: self.size
+                                halign: "center"
+                                valign: "middle"
+                                size_hint_x: 0.6
+
+                            TextInput:
+                                text: root.grossCapitalWithInterest
+                                size_hint_x: 1
+                                readonly: True
+
+                        BoxLayout:
+                            size_hint_y: 1
+
+                            Label:
+                                id: capital_with_interest_net_label
+                                text: "Zysk netto"
+                                text_size: self.size
+                                halign: "center"
+                                valign: "middle"
+                                size_hint_x: 0.6
+
+                            TextInput:
+                                text: root.netCapitalWithInterest
+                                size_hint_x: 1
+                                readonly: True
+
 
                 BoxLayout:
                     orientation: "vertical"
