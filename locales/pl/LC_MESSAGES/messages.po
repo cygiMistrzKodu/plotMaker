@@ -1,0 +1,20 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgid "Deposit"
+msgstr "Kapitał"
+
+msgid "Deposit term"
+msgstr "Czas lokaty"
+
+msgid "Bank interest"
+msgstr "Oprocentowanie"
+
+msgid "Calculate"
+msgstr "Oblicz"
+
+msgid "Language"
+msgstr "Język"

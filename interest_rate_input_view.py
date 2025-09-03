@@ -11,9 +11,11 @@ from decimal import getcontext
 
 from interest_rate.calculator import InterestRateCalculator
 from validation.user_deposit_validation import UserDepositValidator
+from  language_selector.language_selector import LanguageSelector
 
 getcontext().prec = 100
 
+Builder.load_file("language_selector/language_selector.kv")
 Builder.load_file("interest_rate_input.kv")
 
 DepositErrors: TypeAlias = dict[str, str]

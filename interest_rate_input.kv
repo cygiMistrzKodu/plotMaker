@@ -3,7 +3,11 @@
         anchor_x: "center"
         anchor_y: "top"
         padding: 20
-        BoxLayout:
+#        LanguageSelector:
+#            size_hint_y: None
+#            height: 50
+
+        BoxLayout:  # tu chyba musi być laouta horyzontalny  i w nim chyba  vertyklane Lyouata a może innaczej zrobić ?
             orientation: "vertical"
             size_hint: (None, 1)
             width: 720
@@ -29,7 +33,7 @@
 
                 Label:
                     id: deposit_amount_label
-                    text: "Kapitał: "
+                    text: app._("Deposit")
                     size_hint_x: None
                     size_hint_y: None
                     height: 35
@@ -59,6 +63,21 @@
                     color: 1, 0.2, 0.2, 1
                     text_size: self.size
 
+                LanguageSelector:
+                    canvas.before:
+                        Color:
+                            rgba: 0.8, 0.8, 1, 0.3
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    size_hint: None, None
+#                        size: 200, 50
+                    pos_hint: {"x": 0.8, "y": 0.1}
+                    width: 200
+                    height: 100
+#                        size_hint_x: None
+#                        height: 50
+
 
             BoxLayout:
                 orientation: "horizontal"
@@ -68,6 +87,7 @@
                 Label:
                     id: deposit_time_label
                     text: "Czas lokaty: "
+                    text: app._("Deposit term")
                     height: 35
                     size_hint_x: None
                     size_hint_y: None
@@ -102,7 +122,7 @@
                 spacing: 5
                 Label:
                     id: annual_interest_rate_label
-                    text: "Oprocentowanie: "
+                    text: app._("Bank interest")
                     height: 35
                     size_hint_y: None
                     size_hint_x: None
@@ -143,10 +163,14 @@
                     height: 50
                     padding: [190,0,0,0]
                     Button:
-                        text: "Oblicz"
+                        text: app._("Calculate")
                         size_hint: (None, None)
                         size: (80,40)
                         on_press: root.calculate_interest_rate()
+
+#            LanguageSelector:
+#                size_hint_y: None
+#                height: 50
 
             BoxLayout:
                 orientation: "vertical"
