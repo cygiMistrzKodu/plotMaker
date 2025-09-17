@@ -1,180 +1,183 @@
 <InterestRateInput>:
     AnchorLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
         anchor_x: "center"
         anchor_y: "top"
-        padding: 20
-#        LanguageSelector:
-#            size_hint_y: None
-#            height: 50
+        padding: [20,20,20,20]
 
-        BoxLayout:  # tu chyba musi być laouta horyzontalny  i w nim chyba  vertyklane Lyouata a może innaczej zrobić ?
-            orientation: "vertical"
-            size_hint: (None, 1)
-            width: 720
-
+        BoxLayout:
             canvas.before:
                 Color:
-                    rgba: 0.11, 0.14, 0.2, 1
-                RoundedRectangle:
-                    pos: self.x - 8, self.y - 10
-                    size: self.width + 10, self.height + 20
-                    radius: [12]
-                Color:
-                    rgba: 1.0, 0.85, 0.25, 0.35
-                Line:
-                    width: 1.5
-                    rounded_rectangle: (self.x -5, self.y - 6, self.width + 6, self.height + 12, 20)
+                    rgba: 0.08, 0.1, 0.15, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            orientation: "vertical"
+            size_hint_x: None
+            width: 755
 
             BoxLayout:
                 orientation: "horizontal"
                 size_hint_y: None
-                height: 30
-                spacing: 5
-
-                Label:
-                    id: deposit_amount_label
-                    text: app._("Deposit")
-                    size_hint_x: None
-                    size_hint_y: None
-                    height: 35
-                    valign: "middle"
-                    halign: "right"
-                    text_size: self.size
-                    width: 115
-                    color: 1, 0.4, 0.4, 1
-
-                TextInput:
-                    id: deposit_input_id
-                    hint_text: "kapitał zł"
-                    size_hint_x: None
-                    input_filter: "int"
-                    height: 35
-                    width: 150
-                    on_text: root.validate_deposit_amount(self.text)
-                    background_color: (1, 0.9, 0.9, 1) if root.depositAmountError else (1, 1, 1, 1)
-
-                Label:
-                    id: deposit_amount_error_id
-                    text: root.depositAmountError
-                    size_hint_x: None
-                    halign: "left"
-                    valign: "middle"
-                    width: 250
-                    color: 1, 0.2, 0.2, 1
-                    text_size: self.size
-
-                LanguageSelector:
-                    canvas.before:
-                        Color:
-                            rgba: 0.8, 0.8, 1, 0.3
-                        Rectangle:
-                            pos: self.pos
-                            size: self.size
-                    size_hint: None, None
-#                        size: 200, 50
-                    pos_hint: {"x": 0.8, "y": 0.1}
-                    width: 200
-                    height: 100
-#                        size_hint_x: None
-#                        height: 50
-
-
-            BoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
-                height: 30
-                spacing: 5
-                Label:
-                    id: deposit_time_label
-                    text: "Czas lokaty: "
-                    text: app._("Deposit term")
-                    height: 35
-                    size_hint_x: None
-                    size_hint_y: None
-                    valign: "middle"
-                    halign: "right"
-                    text_size: self.size
-                    width: 115
-                TextInput:
-                    id: deposit_time_input_id
-                    hint_text: "czas w miesiącach"
-                    input_filter: "int"
-                    size_hint_x: None
-                    width: 150
-                    on_text: root.validate_deposit_time(self.text)
-                    background_color: (1, 0.9, 0.9, 1) if root.depositTimeMonthsError else (1, 1, 1, 1)
-                Label:
-                    id: deposit_time_error_id
-                    text: root.depositTimeMonthsError
-                    size_hint_x: None
-                    halign: "left"
-                    valign: "middle"
-                    width: 250
-                    color: 1, 0.2, 0.2, 1
-                    text_size: self.size
-
-
-            BoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
-                width: 260
-                height: 30
-                spacing: 5
-                Label:
-                    id: annual_interest_rate_label
-                    text: app._("Bank interest")
-                    height: 35
-                    size_hint_y: None
-                    size_hint_x: None
-                    valign: "middle"
-                    halign: "right"
-                    text_size: self.size
-                    width: 115
-                TextInput:
-                    id: bank_interest_rate_input_id
-                    size_hint_x: None
-                    hint_text: "Oprocentoawnie w %"
-                    input_filter: "float"
-                    valign: "middle"
-                    halign: "left"
-                    width: 150
-                    on_text: root.validate_bank_interest_rate(self.text)
-                    background_color: (1, 0.9, 0.9, 1) if root.bankInterestRateError else (1, 1, 1, 1)
-                Label:
-                    id: bank_interest_rate_error_id
-                    text: root.bankInterestRateError
-                    size_hint_x: None
-                    halign: "left"
-                    valign: "middle"
-                    width: 250
-                    color: 1, 0.2, 0.2, 1
-                    text_size: self.size
-
-
-            BoxLayout:
-                orientation: "horizontal"
-                size_hint_y: None
-                spacing: 20
-                height: 50
-
+                size_hint_x: None
+                width: 755
+                height: 145
                 AnchorLayout:
                     anchor_x: "left"
-                    size_hint_y: None
-                    height: 50
-                    padding: [190,0,0,0]
-                    Button:
-                        text: app._("Calculate")
-                        size_hint: (None, None)
-                        size: (80,40)
-                        on_press: root.calculate_interest_rate()
+                    anchor_y: "top"
 
-#            LanguageSelector:
-#                size_hint_y: None
-#                height: 50
+                    BoxLayout:
+                        id: user_input_panel
+                        orientation: "vertical"
+                        size_hint: None, None
+                        size: 435 , 140
+
+                        BoxLayout:
+                            orientation: "horizontal"
+                            size_hint_y: None
+                            height: 30
+                            spacing: 5
+
+                            Label:
+                                id: deposit_amount_label
+                                text: app._("Deposit")
+                                size_hint_x: None
+                                size_hint_y: None
+                                height: 35
+                                valign: "middle"
+                                halign: "left"
+                                text_size: self.size
+                                width: 115
+                                color: 1, 0.4, 0.4, 1
+
+                            TextInput:
+                                id: deposit_input_id
+                                hint_text: "kapitał zł"
+                                size_hint_x: None
+                                input_filter: "int"
+                                height: 35
+                                width: 150
+                                on_text: root.validate_deposit_amount(self.text)
+                                background_color: (1, 0.9, 0.9, 1) if root.depositAmountError else (1, 1, 1, 1)
+
+                            Label:
+                                id: deposit_amount_error_id
+                                text: root.depositAmountError
+                                size_hint_x: None
+                                halign: "left"
+                                valign: "middle"
+                                width: 250
+                                color: 1, 0.2, 0.2, 1
+                                text_size: self.size
+
+                        BoxLayout:
+                            orientation: "horizontal"
+                            size_hint_y: None
+                            height: 30
+                            spacing: 5
+                            Label:
+                                id: deposit_time_label
+                                text: "Czas lokaty: "
+                                text: app._("Deposit term")
+                                height: 35
+                                size_hint_x: None
+                                size_hint_y: None
+                                valign: "middle"
+                                halign: "left"
+                                text_size: self.size
+                                width: 115
+                            TextInput:
+                                id: deposit_time_input_id
+                                hint_text: "czas w miesiącach"
+                                input_filter: "int"
+                                size_hint_x: None
+                                width: 150
+                                on_text: root.validate_deposit_time(self.text)
+                                background_color: (1, 0.9, 0.9, 1) if root.depositTimeMonthsError else (1, 1, 1, 1)
+                            Label:
+                                id: deposit_time_error_id
+                                text: root.depositTimeMonthsError
+                                size_hint_x: None
+                                halign: "left"
+                                valign: "middle"
+                                width: 250
+                                color: 1, 0.2, 0.2, 1
+                                text_size: self.size
+
+                        BoxLayout:
+                            orientation: "horizontal"
+                            size_hint_y: None
+                            width: 260
+                            height: 30
+                            spacing: 5
+                            Label:
+                                id: annual_interest_rate_label
+                                text: app._("Bank interest")
+                                height: 35
+                                size_hint_y: None
+                                size_hint_x: None
+                                valign: "middle"
+                                halign: "left"
+                                text_size: self.size
+                                width: 115
+                            TextInput:
+                                id: bank_interest_rate_input_id
+                                size_hint_x: None
+                                hint_text: "Oprocentoawnie w %"
+                                input_filter: "float"
+                                valign: "middle"
+                                halign: "left"
+                                width: 150
+                                on_text: root.validate_bank_interest_rate(self.text)
+                                background_color: (1, 0.9, 0.9, 1) if root.bankInterestRateError else (1, 1, 1, 1)
+                            Label:
+                                id: bank_interest_rate_error_id
+                                text: root.bankInterestRateError
+                                size_hint_x: None
+                                halign: "left"
+                                valign: "middle"
+                                width: 250
+                                color: 1, 0.2, 0.2, 1
+                                text_size: self.size
+
+                        BoxLayout:
+                            orientation: "horizontal"
+                            size_hint_y: None
+                            size_hint_x: None
+                            height: 50
+                            width: 270
+
+                            Widget:
+                                size_hint_x: None
+                                width: 120
+
+                            AnchorLayout:
+                                anchor_x: "right"
+                                anchor_y: "bottom"
+                                size_hint_y: None
+                                height: 50
+                                Button:
+                                    text: app._("Calculate")
+                                    size_hint: (None, None)
+                                    size: (80,40)
+                                    on_press: root.calculate_interest_rate()
+
+                AnchorLayout:
+                    id: language_selector_panel
+                    size_hint_x: None
+                    width: 320
+                    anchor_x: "right"
+                    anchor_y: "top"
+                    LanguageSelector:
 
             BoxLayout:
+                id: interest_rate_result_panel
                 orientation: "vertical"
-                size_hint: (1,1)
                 ScrollView:
                     size_hint: (1,1)
                     do_scroll_x: False
@@ -195,7 +198,10 @@
                             default_size: (None, 330)
                             size_hint_y: None
                             height: self.minimum_height
-                            spacing: 10
+                            padding: [0,0,0,10]
+
+
+
 
 
 

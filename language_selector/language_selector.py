@@ -5,6 +5,10 @@ from i18n.i18n import set_language
 
 
 class LanguageSelector(BoxLayout):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
     def change_language(self, lang_code):
         app = App.get_running_app()
         app._ = set_language(lang_code)
