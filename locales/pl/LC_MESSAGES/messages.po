@@ -18,3 +18,6 @@ msgstr "Oblicz"
 
 msgid "Language"
 msgstr "Język"
+
+msgid "Deposit zł"
+msgstr "Kapitał zł"

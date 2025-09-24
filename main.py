@@ -16,8 +16,8 @@ class PlotMakerApp(App):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.original_size = None
-        # self._ = set_language('pl')
-        self._ = set_language('en')
+        self._ = set_language('pl')
+        # self._ = set_language('en')
 
     def build(self):
         self.original_size = Window.size

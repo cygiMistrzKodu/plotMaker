@@ -18,3 +18,6 @@ msgstr ""
 
 msgid "Language"
 msgstr ""
+
+msgid "Deposit zł"
+msgstr ""

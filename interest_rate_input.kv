@@ -57,7 +57,8 @@
 
                             TextInput:
                                 id: deposit_input_id
-                                hint_text: "kapitał zł"
+                                text: ""
+                                hint_text: app._("Deposit zł")
                                 size_hint_x: None
                                 input_filter: "int"
                                 height: 35
@@ -162,6 +163,7 @@
                                 size_hint_y: None
                                 height: 50
                                 Button:
+                                    id: calculate_button
                                     text: app._("Calculate")
                                     size_hint: (None, None)
                                     size: (80,40)

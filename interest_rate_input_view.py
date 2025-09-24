@@ -1,5 +1,6 @@
 from typing import TypeAlias
 
+from kivy.app import App
 from kivy.properties import StringProperty
 
 from interfaces.user_deposit import UserDeposit
@@ -11,7 +12,7 @@ from decimal import getcontext
 
 from interest_rate.calculator import InterestRateCalculator
 from validation.user_deposit_validation import UserDepositValidator
-from  language_selector.language_selector import LanguageSelector
+from language_selector.language_selector import LanguageSelector # for .kv
 
 getcontext().prec = 100
 
@@ -91,3 +92,27 @@ class InterestRateInput(BoxLayout):
         if self.ids.intrest_rate_result.data is None:
             self.ids.intrest_rate_result.data = []
         self.ids.intrest_rate_result.data.insert(0, self.calculate_interest(deposit_data))
+
+    def refresh_texts(self):
+
+        _ = App.get_running_app()._
+        labels_translations = {
+            "deposit_amount_label": _("Deposit"),
+            "deposit_time_label": _("Deposit term"),
+            "annual_interest_rate_label": _("Bank interest"),
+            "calculate_button": _("Calculate"),
+        }
+
+        inputs_translations = {
+            "deposit_input_id": _("Deposit zł"),
+        }
+
+        for widget_id, translated_text in labels_translations.items():
+            if widget_id in self.ids:
+                self.ids[widget_id].text = translated_text
+
+        for widget_id, translated_text in inputs_translations.items():
+            if widget_id in self.ids:
+                self.ids[widget_id].hint_text = translated_text
+
+        print("odświeżam teskty")
