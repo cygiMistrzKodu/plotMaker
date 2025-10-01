@@ -21,3 +21,15 @@ msgstr ""
 
 msgid "Deposit zł"
 msgstr ""
+
+msgid "field_cannot_be_empty"
+msgstr "Field cannot be empty"
+
+msgid "filed_cannot_have_letters"
+msgstr "Field cannot have letters"
+
+msgid "filed_cannot_be_less_or_equal_to_zero"
+msgstr "Field cannot be less or equal to zero"
+
+msgid "filed_cannot_be_bigger_than_100%"
+msgstr "Field cannot be bigger than 100"

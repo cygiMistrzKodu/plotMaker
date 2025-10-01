@@ -78,9 +78,9 @@ class UserDepositValidator:
 
         deposit = self._fill_missing_keys(deposit, ["depositAmount", "depositTimeMonths", "bankInterestRate"])
 
-        errors_key: dict[str, str] = {"depositAmountError": self.validate_deposit_amount(deposit["depositAmount"]),
-                                  "depositTimeMonthsError": self.validate_deposit_time(deposit["depositTimeMonths"]),
-                                  "bankInterestRateError": self.validate_bank_interest_rate(
+        errors_key: dict[str, str] = {"depositAmountErrorKey": self.validate_deposit_amount(deposit["depositAmount"]),
+                                  "depositTimeMonthsErrorKey": self.validate_deposit_time(deposit["depositTimeMonths"]),
+                                  "bankInterestRateErrorKey": self.validate_bank_interest_rate(
                                       deposit["bankInterestRate"])}
 
         errors_key = self._remove_keys_with_none(errors_key)

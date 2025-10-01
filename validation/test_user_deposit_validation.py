@@ -101,7 +101,7 @@ def test_bank_interest_rate_100_is_ok(user_deposit_validator):
     assert error_key is None
 
 
-def test_user_deposit_input_form_validation_all_fields_empty_return_three_keys_with_empty_errors_messages(
+def test_user_deposit_input_form_validation_all_fields_empty_return_three_keys_with_empty_message_error_key(
         user_deposit_validator):
     deposit: UserDeposit = {
         "depositAmount": "",
@@ -111,9 +111,9 @@ def test_user_deposit_input_form_validation_all_fields_empty_return_three_keys_w
 
     errors = user_deposit_validator.validate_deposit_form(deposit)
 
-    assert errors == {"depositAmountError": EMPTY_FILED_MESSAGE_KEY,
-                      "depositTimeMonthsError": EMPTY_FILED_MESSAGE_KEY,
-                      "bankInterestRateError": EMPTY_FILED_MESSAGE_KEY}
+    assert errors == {"depositAmountErrorKey": EMPTY_FILED_MESSAGE_KEY,
+                      "depositTimeMonthsErrorKey": EMPTY_FILED_MESSAGE_KEY,
+                      "bankInterestRateErrorKey": EMPTY_FILED_MESSAGE_KEY}
 
 
 def test_user_deposit_input_form_validation_happy_path(
@@ -129,7 +129,7 @@ def test_user_deposit_input_form_validation_happy_path(
     assert errors is None
 
 
-def test_user_deposit_input_form_validation_deposit_amount_empty_return_deposit_amount_error_key_with_error_messages(
+def test_user_deposit_input_form_validation_deposit_amount_empty_return_deposit_amount_error_key(
         user_deposit_validator):
     deposit: UserDeposit = {
         "depositAmount": "",
@@ -139,10 +139,10 @@ def test_user_deposit_input_form_validation_deposit_amount_empty_return_deposit_
 
     errors = user_deposit_validator.validate_deposit_form(deposit)
 
-    assert errors == {"depositAmountError": EMPTY_FILED_MESSAGE_KEY}
+    assert errors == {"depositAmountErrorKey": EMPTY_FILED_MESSAGE_KEY}
 
 
-def test_user_deposit_input_form_validation_deposit_time_empty_return_deposit_amount_error_empty_messages(
+def test_user_deposit_input_form_validation_deposit_time_empty_return_deposit_amount_error_key(
         user_deposit_validator):
     deposit: UserDeposit = {
         "depositAmount": "5",
@@ -152,10 +152,10 @@ def test_user_deposit_input_form_validation_deposit_time_empty_return_deposit_am
 
     errors = user_deposit_validator.validate_deposit_form(deposit)
 
-    assert errors == {"depositTimeMonthsError": EMPTY_FILED_MESSAGE_KEY}
+    assert errors == {"depositTimeMonthsErrorKey": EMPTY_FILED_MESSAGE_KEY}
 
 
-def test_user_deposit_input_form_validation_bank_interest_rate_empty_return_bank_interest_rate_error_empty_messages(
+def test_user_deposit_input_form_validation_bank_interest_rate_empty_return_bank_interest_rate_empty_error_key(
         user_deposit_validator):
     deposit: UserDeposit = {
         "depositAmount": "5",
@@ -165,10 +165,10 @@ def test_user_deposit_input_form_validation_bank_interest_rate_empty_return_bank
 
     errors = user_deposit_validator.validate_deposit_form(deposit)
 
-    assert errors == {"bankInterestRateError": EMPTY_FILED_MESSAGE_KEY}
+    assert errors == {"bankInterestRateErrorKey": EMPTY_FILED_MESSAGE_KEY}
 
 
-def test_user_two_fields_empty_rate_then_error_on_this_two_fields_empty_messages(
+def test_user_two_fields_empty_rate_then_error_on_this_two_fields_empty_error_key(
         user_deposit_validator):
     deposit: UserDeposit = {
         "depositAmount": "",
@@ -178,12 +178,12 @@ def test_user_two_fields_empty_rate_then_error_on_this_two_fields_empty_messages
 
     errors = user_deposit_validator.validate_deposit_form(deposit)
 
-    assert errors == {"depositAmountError": EMPTY_FILED_MESSAGE_KEY,
-                      "depositTimeMonthsError": EMPTY_FILED_MESSAGE_KEY
+    assert errors == {"depositAmountErrorKey": EMPTY_FILED_MESSAGE_KEY,
+                      "depositTimeMonthsErrorKey": EMPTY_FILED_MESSAGE_KEY
                       }
 
 
-def test_user_two_other_fields_empty_rate_then_error_on_this_other_two_fields_empty_messages(
+def test_user_two_other_fields_empty_rate_then_error_on_this_other_two_fields_empty_error_key(
         user_deposit_validator):
     deposit: UserDeposit = {
         "depositAmount": "5",
@@ -193,12 +193,12 @@ def test_user_two_other_fields_empty_rate_then_error_on_this_other_two_fields_em
 
     errors = user_deposit_validator.validate_deposit_form(deposit)
 
-    assert errors == {"depositTimeMonthsError": EMPTY_FILED_MESSAGE_KEY,
-                      "bankInterestRateError": EMPTY_FILED_MESSAGE_KEY
+    assert errors == {"depositTimeMonthsErrorKey": EMPTY_FILED_MESSAGE_KEY,
+                      "bankInterestRateErrorKey": EMPTY_FILED_MESSAGE_KEY
                       }
 
 
-def test_deposit_amount_have_letters_then_cannot_have_letters_error_messages_on_this_field(
+def test_deposit_amount_have_letters_then_cannot_have_letters_error_key_on_this_field(
         user_deposit_validator):
     deposit: UserDeposit = {
         "depositAmount": "34kkLLi",
@@ -208,10 +208,10 @@ def test_deposit_amount_have_letters_then_cannot_have_letters_error_messages_on_
 
     errors = user_deposit_validator.validate_deposit_form(deposit)
 
-    assert errors == {"depositAmountError": CANNOT_HAVE_LETTERS_KEY}
+    assert errors == {"depositAmountErrorKey": CANNOT_HAVE_LETTERS_KEY}
 
 
-def test_all_fields_have_letters_then_all_have_letters_error_messages_on_this_fields(
+def test_all_fields_have_letters_then_all_have_letters_error_keys_on_this_fields(
         user_deposit_validator):
     deposit: UserDeposit = {
         "depositAmount": "34kkLLi",
@@ -222,13 +222,13 @@ def test_all_fields_have_letters_then_all_have_letters_error_messages_on_this_fi
     errors = user_deposit_validator.validate_deposit_form(deposit)
 
     assert errors == {
-        "depositAmountError": CANNOT_HAVE_LETTERS_KEY,
-        "depositTimeMonthsError": CANNOT_HAVE_LETTERS_KEY,
-        "bankInterestRateError": CANNOT_HAVE_LETTERS_KEY
+        "depositAmountErrorKey": CANNOT_HAVE_LETTERS_KEY,
+        "depositTimeMonthsErrorKey": CANNOT_HAVE_LETTERS_KEY,
+        "bankInterestRateErrorKey": CANNOT_HAVE_LETTERS_KEY
     }
 
 
-def test_all_fields_have_values_below_zero_then_all_have_bellow_zero_error_messages_on_this_fields(
+def tet_all_fields_have_values_below_zero_then_all_have_bellow_zero_error_keys_on_this_fields(
         user_deposit_validator):
     deposit: UserDeposit = {
         "depositAmount": "-5",
@@ -239,13 +239,13 @@ def test_all_fields_have_values_below_zero_then_all_have_bellow_zero_error_messa
     errors = user_deposit_validator.validate_deposit_form(deposit)
 
     assert errors == {
-        "depositAmountError": CANNOT_BE_ZERO_OR_BELOW_KEY,
-        "depositTimeMonthsError": CANNOT_BE_ZERO_OR_BELOW_KEY,
-        "bankInterestRateError": CANNOT_BE_ZERO_OR_BELOW_KEY
+        "depositAmountErrorKey": CANNOT_BE_ZERO_OR_BELOW_KEY,
+        "depositTimeMonthsErrorKey": CANNOT_BE_ZERO_OR_BELOW_KEY,
+        "bankInterestRateErrorKey": CANNOT_BE_ZERO_OR_BELOW_KEY
     }
 
 
-def test_fields_values_above_100_and_is_empty_and_bellow_zero_then_errors_messages_accordingly(
+def test_fields_values_above_100_and_is_empty_and_bellow_zero_then_errors_key_accordingly(
         user_deposit_validator):
     deposit: UserDeposit = {
         "depositAmount": "",
@@ -256,26 +256,26 @@ def test_fields_values_above_100_and_is_empty_and_bellow_zero_then_errors_messag
     errors = user_deposit_validator.validate_deposit_form(deposit)
 
     assert errors == {
-        "depositAmountError": EMPTY_FILED_MESSAGE_KEY,
-        "depositTimeMonthsError": CANNOT_BE_ZERO_OR_BELOW_KEY,
-        "bankInterestRateError": CANNOT_BE_BIGGER_THAN_100_KEY
+        "depositAmountErrorKey": EMPTY_FILED_MESSAGE_KEY,
+        "depositTimeMonthsErrorKey": CANNOT_BE_ZERO_OR_BELOW_KEY,
+        "bankInterestRateErrorKey": CANNOT_BE_BIGGER_THAN_100_KEY
     }
 
 
-def test_empty_dictionary_should_return_on_all_fields_empty_errors_message(
+def test_empty_dictionary_should_return_on_all_fields_empty_errors_key(
         user_deposit_validator):
     deposit: UserDeposit = {}
 
     errors = user_deposit_validator.validate_deposit_form(deposit)
 
     assert errors == {
-        "depositAmountError": EMPTY_FILED_MESSAGE_KEY,
-        "depositTimeMonthsError": EMPTY_FILED_MESSAGE_KEY,
-        "bankInterestRateError": EMPTY_FILED_MESSAGE_KEY
+        "depositAmountErrorKey": EMPTY_FILED_MESSAGE_KEY,
+        "depositTimeMonthsErrorKey": EMPTY_FILED_MESSAGE_KEY,
+        "bankInterestRateErrorKey": EMPTY_FILED_MESSAGE_KEY
     }
 
 
-def test_one_right_key_in_input_dictionary_should_return_on_rest_fields_empty_errors_message(
+def test_one_right_key_in_input_dictionary_should_return_on_rest_fields_empty_errors_key(
         user_deposit_validator):
     deposit: UserDeposit = {
         "depositAmount": "4",
@@ -284,12 +284,12 @@ def test_one_right_key_in_input_dictionary_should_return_on_rest_fields_empty_er
     errors = user_deposit_validator.validate_deposit_form(deposit)
 
     assert errors == {
-        "depositTimeMonthsError": EMPTY_FILED_MESSAGE_KEY,
-        "bankInterestRateError": EMPTY_FILED_MESSAGE_KEY
+        "depositTimeMonthsErrorKey": EMPTY_FILED_MESSAGE_KEY,
+        "bankInterestRateErrorKey": EMPTY_FILED_MESSAGE_KEY
     }
 
 
-def test_two_right_key_in_input_dictionary_one_is_missing_should_return_empty_errors_message_on_that_filed(
+def test_two_right_key_in_input_dictionary_one_is_missing_should_return_empty_errors_key_on_that_filed(
         user_deposit_validator):
     deposit: UserDeposit = {
         "depositAmount": "4",
@@ -299,5 +299,5 @@ def test_two_right_key_in_input_dictionary_one_is_missing_should_return_empty_er
     errors = user_deposit_validator.validate_deposit_form(deposit)
 
     assert errors == {
-        "depositTimeMonthsError": EMPTY_FILED_MESSAGE_KEY,
+        "depositTimeMonthsErrorKey": EMPTY_FILED_MESSAGE_KEY,
     }

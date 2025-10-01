@@ -21,3 +21,15 @@ msgstr "Język"
 
 msgid "Deposit zł"
 msgstr "Kapitał zł"
+
+msgid "field_cannot_be_empty"
+msgstr "Pole nie może być puste"
+
+msgid "filed_cannot_have_letters"
+msgstr "Pole musi mieć liczby"
+
+msgid "filed_cannot_be_less_or_equal_to_zero"
+msgstr "Pole nie może być równe lub mniejsze od zera"
+
+msgid "filed_cannot_be_bigger_than_100%"
+msgstr "Pole nie nie może być większe niż 100%"

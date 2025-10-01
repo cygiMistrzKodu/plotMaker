@@ -12,7 +12,13 @@ from decimal import getcontext
 
 from interest_rate.calculator import InterestRateCalculator
 from validation.user_deposit_validation import UserDepositValidator
-from language_selector.language_selector import LanguageSelector # for .kv
+from language_selector.language_selector import LanguageSelector  # for .kv
+
+ERROR_FIELDS = {
+    "depositAmountErrorKey": "depositAmountError",
+    "depositTimeMonthsErrorKey": "depositTimeMonthsError",
+    "bankInterestRateErrorKey": "bankInterestRateError",
+}
 
 getcontext().prec = 100
 
@@ -24,32 +30,41 @@ DepositErrors: TypeAlias = dict[str, str]
 
 class InterestRateInput(BoxLayout):
     depositAmountError = StringProperty("")
+    depositAmountErrorKey = StringProperty("")
     depositTimeMonthsError = StringProperty("")
+    depositTimeMonthsErrorKey = StringProperty("")
     bankInterestRateError = StringProperty("")
+    bankInterestRateErrorKey = StringProperty("")
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.user_deposit_validator = UserDepositValidator()
 
+    def translate(self, key: str) -> str:
+        return App.get_running_app()._(key)
+
     def validate_deposit_amount(self, text_input: TextInput):
-        error = self.user_deposit_validator.validate_deposit_amount(text_input)
-        if error:
-            self.depositAmountError = error
+        error_key = self.user_deposit_validator.validate_deposit_amount(text_input)
+        if error_key:
+            self.depositAmountErrorKey = error_key
         else:
+            self.depositAmountErrorKey = ""
             self.depositAmountError = ""
 
     def validate_deposit_time(self, text_input: TextInput):
-        error = self.user_deposit_validator.validate_deposit_time(text_input)
-        if error:
-            self.depositTimeMonthsError = error
+        error_key = self.user_deposit_validator.validate_deposit_time(text_input)
+        if error_key:
+            self.depositTimeMonthsErrorKey = error_key
         else:
+            self.depositTimeMonthsErrorKey = ""
             self.depositTimeMonthsError = ""
 
     def validate_bank_interest_rate(self, text_input: TextInput):
-        error = self.user_deposit_validator.validate_bank_interest_rate(text_input)
-        if error:
-            self.bankInterestRateError = error
+        error_key = self.user_deposit_validator.validate_bank_interest_rate(text_input)
+        if error_key:
+            self.bankInterestRateErrorKey = error_key
         else:
+            self.bankInterestRateErrorKey = ""
             self.bankInterestRateError = ""
 
     def get_user_input(self) -> UserDeposit:
@@ -85,8 +100,11 @@ class InterestRateInput(BoxLayout):
         self._append_interest_rate_result(deposit_data)
 
     def _update_error_labels(self, errors):
-        for field in ["depositAmountError", "depositTimeMonthsError", "bankInterestRateError"]:
-            setattr(self, field, errors.get(field, ""))
+
+        for key_error_field, gui_error_label in ERROR_FIELDS.items():
+            error_key = errors.get(key_error_field, "")
+            setattr(self, key_error_field, error_key)
+            setattr(self, gui_error_label, self.translate(error_key) if error_key else "")
 
     def _append_interest_rate_result(self, deposit_data):
         if self.ids.intrest_rate_result.data is None:
@@ -95,24 +113,23 @@ class InterestRateInput(BoxLayout):
 
     def refresh_texts(self):
 
-        _ = App.get_running_app()._
         labels_translations = {
-            "deposit_amount_label": _("Deposit"),
-            "deposit_time_label": _("Deposit term"),
-            "annual_interest_rate_label": _("Bank interest"),
-            "calculate_button": _("Calculate"),
+            "deposit_amount_label": self.translate("Deposit"),
+            "deposit_time_label": self.translate("Deposit term"),
+            "annual_interest_rate_label": self.translate("Bank interest"),
+            "calculate_button": self.translate("Calculate"),
         }
-
-        inputs_translations = {
-            "deposit_input_id": _("Deposit zł"),
-        }
-
         for widget_id, translated_text in labels_translations.items():
             if widget_id in self.ids:
                 self.ids[widget_id].text = translated_text
 
+        inputs_translations = {
+            "deposit_input_id": self.translate("Deposit zł"),
+        }
         for widget_id, translated_text in inputs_translations.items():
             if widget_id in self.ids:
                 self.ids[widget_id].hint_text = translated_text
 
-        print("odświeżam teskty")
+        for key_error_field, gui_error_label in ERROR_FIELDS.items():
+            error_key = getattr(self, key_error_field, "")
+            setattr(self, gui_error_label, self.translate(error_key) if error_key else "")
