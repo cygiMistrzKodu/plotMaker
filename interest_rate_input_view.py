@@ -125,6 +125,8 @@ class InterestRateInput(BoxLayout):
 
         inputs_translations = {
             "deposit_input_id": self.translate("Deposit zł"),
+            "deposit_time_input_id": self.translate("Time in months"),
+            "bank_interest_rate_input_id": self.translate("Interest rate %"),
         }
         for widget_id, translated_text in inputs_translations.items():
             if widget_id in self.ids:
@@ -133,3 +135,10 @@ class InterestRateInput(BoxLayout):
         for key_error_field, gui_error_label in ERROR_FIELDS.items():
             error_key = getattr(self, key_error_field, "")
             setattr(self, gui_error_label, self.translate(error_key) if error_key else "")
+
+        self._refresh_texts_in_children()
+
+    def _refresh_texts_in_children(self):
+        for child in self.walk():
+            if child is not self and hasattr(child, "refresh_texts"):
+                child.refresh_texts()

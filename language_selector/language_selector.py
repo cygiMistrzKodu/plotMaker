@@ -8,10 +8,16 @@ class LanguageSelector(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-
     def change_language(self, lang_code):
         app = App.get_running_app()
         app._ = set_language(lang_code)
 
         if hasattr(app.root, 'refresh_texts'):
             app.root.refresh_texts()
+
+    def translate(self, key):
+        return App.get_running_app()._(key)
+
+    def refresh_texts(self):
+        if "language_selector_label" in self.ids:
+            self.ids["language_selector_label"].text = self.translate("Language")

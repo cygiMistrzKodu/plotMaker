@@ -6,6 +6,7 @@
     padding: [0,0,0,20]
 
     Label:
+        id: language_selector_label
         text: app._("Language")
         size_hint_y: 0.5
         size_hint_x: None
@@ -21,6 +22,6 @@
         size_hint_x: None
         height: 40
         width: 50
-        pos_hint: {"center_x": 0.5}
+        pos_hint: {"right": 1}
         on_text: root.change_language(self.text)
 

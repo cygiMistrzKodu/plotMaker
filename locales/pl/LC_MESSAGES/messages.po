@@ -22,6 +22,12 @@ msgstr "Język"
 msgid "Deposit zł"
 msgstr "Kapitał zł"
 
+msgid "Time in months"
+msgstr "Czas w miesiącach"
+
+msgid "Interest rate %"
+msgstr "Oprocentowanie w %"
+
 msgid "field_cannot_be_empty"
 msgstr "Pole nie może być puste"
 

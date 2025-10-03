@@ -22,6 +22,12 @@ msgstr ""
 msgid "Deposit zł"
 msgstr ""
 
+msgid "Time in months"
+msgstr ""
+
+msgid "Interest rate %"
+msgstr ""
+
 msgid "field_cannot_be_empty"
 msgstr "Field cannot be empty"
 
