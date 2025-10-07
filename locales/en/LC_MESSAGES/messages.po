@@ -39,3 +39,6 @@ msgstr "Field cannot be less or equal to zero"
 
 msgid "filed_cannot_be_bigger_than_100%"
 msgstr "Field cannot be bigger than 100"
+
+msgid "[u]Deposit (zł)[/u]"
+msgstr ""

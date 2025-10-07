@@ -39,3 +39,6 @@ msgstr "Pole nie może być równe lub mniejsze od zera"
 
 msgid "filed_cannot_be_bigger_than_100%"
 msgstr "Pole nie nie może być większe niż 100%"
+
+msgid "[u]Deposit (zł)[/u]"
+msgstr "[u]Odsetki (zł)[/u]"

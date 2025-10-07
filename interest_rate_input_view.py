@@ -137,8 +137,17 @@ class InterestRateInput(BoxLayout):
             setattr(self, gui_error_label, self.translate(error_key) if error_key else "")
 
         self._refresh_texts_in_children()
+        self._refresh_text_in_interest_rate_result_view()
 
     def _refresh_texts_in_children(self):
         for child in self.walk():
             if child is not self and hasattr(child, "refresh_texts"):
                 child.refresh_texts()
+
+    def _refresh_text_in_interest_rate_result_view(self):
+        result_view = self.ids.get("intrest_rate_result")
+        if result_view and result_view.children:
+            layout = result_view.children[0]
+            for result_view in layout.children:
+                if hasattr(result_view, "refresh_texts"):
+                    result_view.refresh_texts()
