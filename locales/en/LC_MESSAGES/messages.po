@@ -42,3 +42,54 @@ msgstr "Field cannot be bigger than 100"
 
 msgid "[u]Deposit (zł)[/u]"
 msgstr ""
+
+msgid "Deposit (zł):"
+msgstr ""
+
+msgid "Time (m.):"
+msgstr ""
+
+msgid "Percent (%):"
+msgstr ""
+
+msgid "Gross profit"
+msgstr ""
+
+msgid "Net profit"
+msgstr ""
+
+msgid "Gross interest"
+msgstr ""
+
+msgid "Net interest"
+msgstr ""
+
+msgid "Tax"
+msgstr ""
+
+msgid "Gross daily"
+msgstr ""
+
+msgid "Net daily"
+msgstr ""
+
+msgid "Tax daily"
+msgstr ""
+
+msgid "Gross monthly"
+msgstr ""
+
+msgid "Net monthly"
+msgstr ""
+
+msgid "Tax monthly"
+msgstr ""
+
+msgid "Gross annual"
+msgstr ""
+
+msgid "Net annual"
+msgstr ""
+
+msgid "Tax annual"
+msgstr ""

@@ -21,7 +21,7 @@
                     radius: [10]
 
             Label:
-                id: interest_result_title_id
+                id: interest_result_title_label_id
                 text: app._("[u]Deposit (zł)[/u]")
                 font_size: 18
                 bold: True
@@ -49,8 +49,8 @@
                             size_hint_y: 1
 
                             Label:
-                                id: deposit_amount_id
-                                text: "Kapitał (zł):"
+                                id: deposit_amount_label_id
+                                text: app._("Deposit (zł):")
                                 text_size: self.size
                                 halign: "center"
                                 valign: "middle"
@@ -65,8 +65,8 @@
                             size_hint_y: 1
 
                             Label:
-                                id: deposit_time_months_id
-                                text: "Czas (m.): "
+                                id: deposit_time_months_label_id
+                                text: app._("Time (m.):")
                                 text_size: self.size
                                 halign: "center"
                                 valign: "middle"
@@ -81,8 +81,8 @@
                             size_hint_y: 1
 
                             Label:
-                                id: bank_interest_rate_id
-                                text: "Procent (%): "
+                                id: bank_interest_rate_label_id
+                                text: app._("Percent (%):")
                                 text_size: self.size
                                 halign: "center"
                                 valign: "middle"
@@ -97,8 +97,8 @@
                             size_hint_y: 1
 
                             Label:
-                                id: capital_with_interest_gross_label
-                                text: "Zysk brutto"
+                                id: capital_with_interest_gross_label_id
+                                text: app._("Gross profit")
                                 text_size: self.size
                                 halign: "center"
                                 valign: "middle"
@@ -113,8 +113,8 @@
                             size_hint_y: 1
 
                             Label:
-                                id: capital_with_interest_net_label
-                                text: "Zysk netto"
+                                id: capital_with_interest_net_label_id
+                                text: app._("Net profit")
                                 text_size: self.size
                                 halign: "center"
                                 valign: "middle"
@@ -142,7 +142,8 @@
                             size_hint_x: 0.5
 
                             Label:
-                                text: "Odsetki brutto"
+                                id: interest_rate_gross_label_id
+                                text: app._("Gross interest")
 
                             TextInput:
                                 text: root.intrestRateGross
@@ -153,7 +154,8 @@
                             size_hint_x: 0.5
 
                             Label:
-                                text: "Odsetki netto"
+                                id: interest_rate_net_label_id
+                                text: app._("Net interest")
 
                             TextInput:
                                 text: root.intrestRateNet
@@ -164,7 +166,8 @@
                             size_hint_x: 0.5
 
                             Label:
-                                text: "Podatek"
+                                id: tax_from_interest_rate_label_id
+                                text: app._("Tax")
 
                             TextInput:
                                 text: root.intrestRateTax
@@ -182,7 +185,8 @@
                             spacing: 5
 
                             Label:
-                                text: "Dzienne brutto"
+                                id: gross_daily_interest_rate_label_id
+                                text: app._("Gross daily")
                                 size_hint_y: None
                                 height: 20
 
@@ -194,7 +198,8 @@
                                 readonly: True
 
                             Label:
-                                text: "Dzienne netto"
+                                id: net_daily_interest_rate_label_id
+                                text: app._("Net daily")
                                 size_hint_y: None
                                 height: 20
 
@@ -206,7 +211,8 @@
                                 readonly: True
 
                             Label:
-                                text: "podatek dziennie"
+                                id: tax_daily_interest_rate_label_id\
+                                text: app._("Tax daily")
                                 size_hint_y: None
                                 height: 20
 
@@ -224,7 +230,9 @@
                             size_hint_x: 1
 
                             Label:
-                                text: "Miesięcznie brutto"
+                                id: gross_monthly_interest_rate_label_id
+
+                                text: app._("Gross monthly")
                                 size_hint_y: None
                                 height: 20
 
@@ -236,7 +244,8 @@
                                 readonly: True
 
                             Label:
-                                text: "Miesięcznie netto"
+                                id: net_monthly_interest_rate_label_id
+                                text: app._("Net monthly")
                                 size_hint_y: None
                                 height: 20
 
@@ -248,7 +257,8 @@
                                 readonly: True
 
                             Label:
-                                text: "Podatek miesięcznie"
+                                id: tax_monthly_interest_rate_label_id
+                                text: app._("Tax monthly")
                                 size_hint_y: None
                                 height: 20
 
@@ -266,7 +276,8 @@
                             size_hint_x: 1
 
                             Label:
-                                text: "Rocznie brutto"
+                                id: gross_annual_interest_rate_label_id
+                                text: app._("Gross annual")
                                 size_hint_y: None
                                 height: 20
 
@@ -278,7 +289,8 @@
                                 readonly: True
 
                             Label:
-                                text: "Rocznie netto"
+                                id: net_annual_interest_rate_label_id
+                                text: app._("Net annual")
                                 size_hint_y: None
                                 height: 20
 
@@ -290,7 +302,8 @@
                                 readonly: True
 
                             Label:
-                                text: "Podatek rocznie"
+                                id: tax_annual_interest_rate_label_id
+                                text: app._("Tax annual")
                                 size_hint_y: None
                                 height: 20
 

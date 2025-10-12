@@ -42,3 +42,54 @@ msgstr "Pole nie nie może być większe niż 100%"
 
 msgid "[u]Deposit (zł)[/u]"
 msgstr "[u]Odsetki (zł)[/u]"
+
+msgid "Deposit (zł):"
+msgstr "Kapitał (zł)"
+
+msgid "Time (m.):"
+msgstr "Czas (m.):"
+
+msgid "Percent (%):"
+msgstr "Procent (%):"
+
+msgid "Gross profit"
+msgstr "Zysk brutto"
+
+msgid "Net profit"
+msgstr "Zysk netto"
+
+msgid "Gross interest"
+msgstr "Odsetki brutto"
+
+msgid "Net interest"
+msgstr "Odsetki netto"
+
+msgid "Tax"
+msgstr "Podatek"
+
+msgid "Gross daily"
+msgstr "Dzienne brutto"
+
+msgid "Net daily"
+msgstr "Dzienne netto"
+
+msgid "Tax daily"
+msgstr "Podatek dziennie"
+
+msgid "Gross monthly"
+msgstr "Miesięcznie brutto"
+
+msgid "Net monthly"
+msgstr "Miesięcznie netto"
+
+msgid "Tax monthly"
+msgstr "Podatek miesięcznie"
+
+msgid "Gross annual"
+msgstr "Rocznie brutto"
+
+msgid "Net annual"
+msgstr "Rocznie netto"
+
+msgid "Tax annual"
+msgstr "Podatek rocznie"
