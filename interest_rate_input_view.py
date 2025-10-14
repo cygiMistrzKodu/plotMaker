@@ -47,6 +47,7 @@ class InterestRateInput(BoxLayout):
         error_key = self.user_deposit_validator.validate_deposit_amount(text_input)
         if error_key:
             self.depositAmountErrorKey = error_key
+            self._set_field_error("depositAmountError",error_key)
         else:
             self.depositAmountErrorKey = ""
             self.depositAmountError = ""
@@ -55,6 +56,7 @@ class InterestRateInput(BoxLayout):
         error_key = self.user_deposit_validator.validate_deposit_time(text_input)
         if error_key:
             self.depositTimeMonthsErrorKey = error_key
+            self._set_field_error("depositTimeMonthsError", error_key)
         else:
             self.depositTimeMonthsErrorKey = ""
             self.depositTimeMonthsError = ""
@@ -63,9 +65,13 @@ class InterestRateInput(BoxLayout):
         error_key = self.user_deposit_validator.validate_bank_interest_rate(text_input)
         if error_key:
             self.bankInterestRateErrorKey = error_key
+            self._set_field_error("bankInterestRateError", error_key)
         else:
             self.bankInterestRateErrorKey = ""
             self.bankInterestRateError = ""
+
+    def _set_field_error(self, gui_attribute_error_name: str, error_key: str):
+        setattr(self, gui_attribute_error_name, self.translate(error_key) if error_key else "")
 
     def get_user_input(self) -> UserDeposit:
         data: UserDeposit = {
